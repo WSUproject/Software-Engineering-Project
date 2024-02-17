@@ -1,0 +1,11 @@
+Groupmates Present:
+  Chris Young
+  Saurav Sitoula
+  Rohan Rajbhandari
+  Aashik Bhattarai
+
+Met at: Intro to Software Engineering Class
+Date of Meeting: 2/13/2024 12:02PM
+Description of Meeting:
+During this meeting we finished the requirements specification and we discussed the framework we're using for our application as well as what the dimensions should look like 
+for each device that is on the website that we're creating.

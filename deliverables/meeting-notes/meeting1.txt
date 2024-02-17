@@ -1,0 +1,13 @@
+GroupMates Present:
+  Chris Young
+  Rohan Rajbhandari
+  Saurav Sitoula
+  Aashik Bhattarai
+
+Met at: Google Meet
+Date of Meeting: 1/29/2024 8:00PM
+Description of Meeting: 
+During this meeting we concluded that we should make an event/job posting website that lets us create or see job postings or events. We also discussed that Aashik and I 
+should create the frontend of the website, and that Saurav and Rohan should create the SQL database and the backend of the website. We will use the SQL database to keep track of
+the information of people who have created an account on the website as well as the events that have been created. Rohan also made a picture of what the website should look like.
+We also decided to use HTML, CSS, and Javascript for the frontend part of the website. We will use MySQL for the database and C# and NodeJS for the backend. 

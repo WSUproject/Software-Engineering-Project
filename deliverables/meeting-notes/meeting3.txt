@@ -1,0 +1,10 @@
+GroupMates Present:
+  Chris Young
+  Rohan Rajbhandari 
+  Saurav Sitoula
+
+Met at: In intro to software engineering class
+Date of Meeting: 2/6/2024 12:00PM
+Description of Meeting:
+During this meeting we decided that we are going to use scrum development methodology. Scrum development methodology works by meeting every day and we decided to meet every day at 8:00PM in google meets starting today.
+We are also planning to list all the features of our application or website that we're going to create.

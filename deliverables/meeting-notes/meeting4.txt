@@ -1,0 +1,13 @@
+GroupMates Present:
+  Chris Young
+  Rohan Rajbhandari
+  Saurav Sitoula
+  Aashik Bhattarai
+
+Met at: Intro to Software Engineering Class
+Date of Meeting: 2/8/2024 12:03PM
+Description of Meeting:
+During this meeting we discussed the requirements for our application and the features in more detail. We mentioned that our first requirement should be whenever someone signs up
+for an account on our website their first and last name, email, phone number, gender, and date of birth are saved into a database. The second requirement is that each of the different
+tabs should take us to a different web page. For example, the sign up tabe should take us to the sign up page and the jobs tab should take us to a page that lists all available jobs
+and a button that lets us post a new job.

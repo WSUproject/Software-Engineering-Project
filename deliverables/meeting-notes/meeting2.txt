@@ -1,0 +1,10 @@
+Groupmates Present:
+  Chris Young
+  Aashik Bhattarai
+  Saurav Sitoula
+
+Met at: During Class
+Date of Meeting: 1/30/2024 12:00PM
+Description of Meeting:
+During this meeting we decided that I should be in charge of developing the frontend of the website. Rohan should be in charge of the SQL database and Saurav should be in 
+charge of the backend. 
