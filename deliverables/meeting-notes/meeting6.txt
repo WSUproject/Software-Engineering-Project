@@ -1,0 +1,10 @@
+GroupMates Present
+  Chris Young
+  Saurav Sitoula
+  Rohan Rajbhandari
+
+Met at: Google Meets
+Date of Meeting: 2/14/2024 8:30PM
+Description of Meeting:
+During this meeting we discussed what we should put for our software development plan document. We also discussed that we should use an organizaitonal github repository so that 
+we can all have access to the same project and because of that we're unable to use the github repository that I created.
