@@ -20,3 +20,7 @@
   In the second sprint that runs from March 2 to March 6 we will complete the accomodation posting feature for minimum vialble project.
   In the third sprint that runs from March 7 to March 12 will complete the job posting feature for minimum viable project.
   The Minimum vialble project will be completed on march 12.
+  The Requirements Specification will be available on 2/20/2024 by 11:59PM
+  The Design Specification Document will be available on 2/27/2024
+  The Product will be available on 3/11/2024
+
