@@ -1,0 +1,10 @@
+Groupmates Present:
+  Chris Young
+  Saurav Sitoula
+
+Met at: During Class
+Date of Meeting: 2/20/2024 12:00PM
+Description of Meeting:
+During this meeting we chose which github repository we should all use for our software engineering project. We 
+also created a README.md file that shows where our old repository and commit history is. We decided that we would
+start creating the design document starting today. 
