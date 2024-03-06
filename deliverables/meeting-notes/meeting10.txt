@@ -1,0 +1,11 @@
+GroupMates Present:
+  Chris Young
+  Saurav Sitoula
+  Rohan Rajbhandari
+  Aashik Bhattarai
+
+Met at: Google Meet
+Date of Meeting: 3/5/2024 8:30PM
+Description of Meeting:
+During this meeting we discussed completing the design specifications and moving on to the coding phase. We also went over our current progress on the wireframe we're doing and 
+that we still have more work to do on the Event page wireframe.
