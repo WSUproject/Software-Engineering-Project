@@ -1,6 +1,7 @@
 GroupMates Present:
   Chris Young
   Saurav Sitoula
+  Aashik Bhattarai
   Rohan Rajbhandari
 
 Met at: Intro to Software Engineering Class
