@@ -1,0 +1,10 @@
+GroupMates Present:
+  Chris Young
+  Saurav Sitoula
+  Rohan Rajbhandari
+
+Met at: Intro to Software Engineering Class
+Date of Meeting: 3/7/2024 12:08PM
+Description of Meeting:
+Completed the Wireframe using the ideas from each of our groupmates. We also showed what our wireframe for each of our webpages is going to look like. We also decided that we're
+ready to start programming our project. 
