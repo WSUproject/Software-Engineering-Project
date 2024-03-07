@@ -1,0 +1,21 @@
+nav ul{
+	list-style-type: none;
+}
+nav a{
+	padding: right;
+	
+}
+nav li{
+	display: inline;
+}
+form li {
+	display: inline;
+	
+}
+form ul {
+	padding: left;
+}
+
+form input {
+	margin-right: 166px;
+}
