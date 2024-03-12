@@ -15,3 +15,23 @@
 - Edit Button: Visible only to the post creator, it allows editing the post's content.
 - Delete Button: Also exclusive to the post creator, clicking it prompts the user for confirmation before deleting the post.
 - Apply/Respond Button: For job postings, opens a form to submit application documents. For accommodation postings, it might open a dialog box for the user to leave a comment or question.
+
+4.  Posting Forms (Event, Job, Accommodation)
+
+- Submit Button: Validates input and submits the form to create a new posting. On success, redirects the user to their new posting or a confirmation page.
+- Cancel Button: Discards any changes and returns the user to the previous page or home.
+- Add/Update Tags Button: Allows users to dynamically add or change tags for their posting for better categorization.
+  ![Create Accommodation](Wireframe\Create Accommodation.png)
+  ![Create Event](Wireframe\Create Event.png)
+  ![Create Job](Wireframe\Create Job.png)
+
+5. Viewing Posts
+
+- Filter Options: Dropdowns or checkboxes for filtering the listings by various criteria (e.g., location, type, date). A "Apply Filters" button refreshes the listings based on the selected filters.
+- Sort By Dropdown: Lets users sort postings by date, relevance, or other predefined criteria.
+  ![View Accommodation](Wireframe\Accommodation Posts.png)
+  ![View Event](Wireframe\Event Posts.png)
+  ![View Job](Wireframe\Job Posts.png)
+  ![View Accommodation Details](Wireframe\Accommodation Description.png)
+  ![View Event Details](Wireframe\Event Description.png)
+  ![View Job Details](Wireframe\Job Description.png)
