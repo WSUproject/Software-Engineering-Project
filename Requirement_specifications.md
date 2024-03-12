@@ -29,3 +29,24 @@ REQUIREMENT SPECIFICATIONS
 
 3.4. Event Filtering
 • 3.4.1. The users shall be able to filter out the events filtered based on location, type of event, and date as well as the tags of the event.
+
+4. Job Posting
+   Job Posting is a post created for vacancies of job so as to get connected to new possible employees.
+   4.1. Creating Job Posts
+   •	4.1.1. Any registered user shall be able to create a job posting.
+   •	4.1.2. The user shall be able to give information about the job such as name of hiring organization, level, salary, deadline, location, as well as education                and experience requirements of the event when creating the job posting.
+   •	4.1.3. Job postings shall include tags related to the job. The tags may include part time, currently open, full time, negotiable/ non-negotiable salary.
+
+4.2. Job Post Edit
+•	4.2.1. The user who created the job post shall be able to edit the post. All the fields of the job posting along with the tags can be updated.
+
+4.3. Job Post Delete
+•	4.3.1. The user who created the job post must be able to delete the post. The deleted job posting shall not be shown to the users.
+
+4.4. Applying for Jobs
+•	4.4.1. Members shall be able to upload documents (CV, cover letters) to a job posting portal. The uploaded documents may be used to hire people.
+•	4.4.2. Only the job posting owner and the user who uploaded the document shall be able to view or update it.
+
+4.5. Job Filtering
+•	4.5.1. Jobs shall be able to be seen filtered based on tags associated with them.
+
