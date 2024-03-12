@@ -35,3 +35,27 @@
   ![View Accommodation Details](Wireframe\Accommodation Description.png)
   ![View Event Details](Wireframe\Event Description.png)
   ![View Job Details](Wireframe\Job Description.png)
+
+  6.  User Profile Page
+
+- Edit Profile Button: Enables editing of user profile details such as picture, address, email, etc.
+- Change Password Button: Opens a form for updating the user’s password, requiring current and new passwords.
+- My Posts Tab: Displays a list of the user's postings with options to view, edit, or delete each.
+
+Security and Validation for Button Actions
+
+- Form Submission: All forms will implement client-side validation to provide immediate feedback to users. Server-side validation will also be in place to ensure data integrity and security.
+
+SEQUENCE DIAGRAMS:
+![](Sequence Diagrams\create accommodation.png)
+![](Sequence Diagrams\Create Event.png)
+![](Sequence Diagrams\create job.png)
+![](Sequence Diagrams\delete accommodation.png)
+![](Sequence Diagrams\delete event.png)
+![](Sequence Diagrams\delete job.png)
+![](Sequence Diagrams\Login.png)
+![](Sequence Diagrams\Signup-Register.png)
+![](Sequence Diagrams\update accommodation.png)
+![](Sequence Diagrams\Update Event.png)
+![](Sequence Diagrams\update job.png)
+
