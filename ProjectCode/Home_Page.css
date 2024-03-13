@@ -1,17 +1,25 @@
 nav ul{
 	list-style-type: none;
+	float: right;
+	margin-top: 50px;
+	margin-left: 170px
 }
+
 nav a{
 	padding: right;
 	
 }
+
 nav li{
 	display: inline;
+	font-size: 25px;
 }
+
 form li {
 	display: inline;
 	
 }
+
 form ul {
 	padding: left;
 	float: right;

@@ -5,7 +5,14 @@
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="Home_Page.css">
 </head>
-
+<style>
+div {
+	padding-left: 200px;
+}
+div select {
+	margin-right: 500px;
+}
+</style>
 <body>
 <form>
 <img src="favicon.ico" width="50" height="50">
@@ -21,12 +28,20 @@
 <ul>
 <li><a href="file:///C:/Users/Chris/Desktop/College%20Work/Intro%20to%20Software%20Engineering/Software-Engineering-Project-main/ProjectCode/Home_Page.html">Home |</a></li>
 <li><a href="file:///C:/Users/Chris/Desktop/College%20Work/Intro%20to%20Software%20Engineering/Software-Engineering-Project-main/ProjectCode/Events_Page.html">Events |</a></li>
-<li><a href="">Jobs |</a></li>
+<li><a href="file:///C:/Users/Chris/Desktop/College%20Work/Intro%20to%20Software%20Engineering/Software-Engineering-Project-main/ProjectCode/H=Job_Posts_Page.html">Jobs |</a></li>
 <li><a href="">Accommodations</a></li>
 </ul>
 </nav>
-
-
+<div>
+<select name="Category" id="categories">
+  <option value="Category">Category</option>
+  <option value="AI Developer">AI Developer</option>
+  <option value="Computer Programmer">Computer Programmer</option>
+  <option value="Software Developer">Software Developer</option>
+  <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+</select> 
+<button type="button" value="Create Job">Create Job</button>
+<div>
 </body>
 
 </html>
