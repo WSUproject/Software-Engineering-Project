@@ -2,13 +2,16 @@ import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/navBar/navIndex";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import About from "./components/About/About";
 
 function App() {
   return (
     <div>
       <Router>
         <Navbar />
-        <Routes></Routes>
+        <Routes>
+          <Route path="/about" element={<About />} />
+        </Routes>
       </Router>
       <div className="App">
         <header className="App-header">
