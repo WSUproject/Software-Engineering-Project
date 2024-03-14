@@ -14,7 +14,11 @@ const Navbar = (props) => {
     <>
       <Nav1>
         <NavLink to="/">
-          <img src="#" style={{ width: "150px" }} alt="Logo" />
+          <img
+            src="/Images/Logo/logo_NoBG.png"
+            style={{ width: "150px" }}
+            alt="Logo"
+          />
         </NavLink>
         <Bars />
         <NavMenu>
