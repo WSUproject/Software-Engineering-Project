@@ -1,0 +1,11 @@
+GroupMates Present:
+  Chris Young
+  Rohan Rajbhandari
+  Saurav Sitoula
+  Aashik Bhattarai
+
+Met at: Google Meets
+Date of Meeting: 3/13/2024 8:30PM
+Description of Meeting:
+We finished the the design specifications. We're also going to start programming the project in React starting tommorrow. We're also planning to convert the HTML and CSS code 
+already written in the ProjectCode folder to React code. 
