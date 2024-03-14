@@ -1,13 +1,5 @@
 nav ul{
-	list-style-type: none;
-	float: right;
-	margin-top: 50px;
-	margin-left: 170px
-}
-
-nav a{
-	padding: right;
-	
+	text-align: center;
 }
 
 nav li{
@@ -27,4 +19,21 @@ form ul {
 
 form input {
 	margin-right: 166px;
+}
+
+#homeElements {
+	text-align: center;
+}
+
+#footerElements {
+	text-align: center;
+	
+}
+
+#categories {
+	margin-left: 100px;
+}
+
+#createEventButton {
+	margin-left: 800px;
 }
