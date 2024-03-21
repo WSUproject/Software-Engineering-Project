@@ -1,0 +1,124 @@
+{
+    "posts": [
+      {
+        "id": 1,
+        "title": "json-server",
+        "author": "typicode"
+      },
+      {
+        "id": 2,
+        "title": "test-data",
+        "author": "kunal"
+      }
+    ],
+    "hold": [
+        
+        {
+            "id": 1,
+            "institution_name": "assadd",
+            "post": "asdsas",
+            "level": "asdsas",
+            "vacancy": 4,
+            "type": "asdsas",
+            "salary": "asdsas",
+            "deadline": "asdsas",
+            "state": "asdsas",
+            "city": "asdsas",
+            "venue": "asdsas",
+            "education": "asdsas",
+            "experience": "asdsas",
+            "specifications": "asdsas, sasas, sadasd, asdasd, asdasd, saasd",
+            "description": "asdsas, sasas, sadasd, asdasd, asdasd, saasd"
+        },
+        {
+            "id": 2,
+            "institution_name": "jkljk",
+            "post": "jklkjl",
+            "level": "jkljll",
+            "vacancy": 4,
+            "type": "asdsjkljklas",
+            "salary": "jkljl",
+            "deadline": "ajkljjklsdsas",
+            "state": "jkljkljl",
+            "city": "kjljkljkl",
+            "venue": "kjljkljkl",
+            "education": "kjlkjljkl",
+            "experience": "jklkjllk",
+            "specifications": "jkljkl, sasas, sadasd, asdasd, asdasd, saasd",
+            "description": "asdsas, sasas, sadasd, asdasd, asdasd, saasd"
+        }
+      ],
+    "comments": [
+      {
+        "id": 1,
+        "body": "some comment",
+        "postId": 1
+      }
+    ],
+
+    "jobs": [
+        {
+            "id": 9,
+            "institution_name": "Mindgrub Technologies",
+            "jobBanner": "\\Images\\JobImages\\1.png",
+            "post": "Node Js Developer",
+            "level": "Intermediate",
+            "vacancy": 5,
+            "type": "Full-Time",
+            "salary": 3000,
+            "deadline": "2022-06-16",
+            "education": "Bachelors",
+            "experience": "1.5 - 2 years",
+            "description": "Design and build  backend APIs for mobile apps using Node.js, Ability to clearly communicate ideas best practices and problems, Write clean and efficient codes, Collaborate with cross-functional teams to solve complex problems",
+            "specifications": "Experience in Amazon web service will be a plus point, Basic understanding of front-end technologies, Expert understanding of server-side logic and front-end performance optimization, Strong proficiency with JavaScript"
+        },
+        {
+            "id": 10,
+            "institution_name": "Loyola University",
+            "jobBanner": "\\Images\\JobImages\\2.jfif",
+            "post": "Library Assistant",
+            "level": "Entry Level",
+            "vacancy": 2,
+            "type": "Part-Time",
+            "salary": 200,
+            "deadline": "2022-06-23",
+            "education": "Degree is not required.",
+            "experience": "Freshers can apply",
+            "description": "Taking responsibility of proper record keeping of the books in the system, Managing the daily operations of the library, Issuing and collecting books and keeping its record in the system,Selecting, sorting and classifying library resources",
+            "specifications": "Excellent in English language (Written/Spoken), Knowledge of library software and Microsoft Office Package"
+        },
+        {
+            "id": 11,
+            "institution_name": "St. Mary's College of Maryland",
+            "jobBanner": "\\Images\\JobImages\\3.jpg",
+            "post": "Security Assistant",
+            "level": "Beginner",
+            "vacancy": 3,
+            "type": "Part-Time",
+            "salary": 200,
+            "deadline": "2022-06-20",
+            "education": "Degree not required",
+            "experience": "Freshers can apply",
+            "description": "Make guests aware of rules that must be adhered to, Contact the relevant authorities if a crime is committed or an accident occurs, Report to supervisors on a regular basis, Record any suspicious activities to the supervisor",
+            "specifications": "Fluent in English, Have good communication skill"
+        },
+        {
+            "id": 12,
+            "institution_name": "RS&F",
+            "jobBanner": "\\Images\\JobImages\\4.jpg",
+            "post": "Accountant",
+            "level": "Entry Level",
+            "vacancy": 4,
+            "type": "Internship",
+            "salary": 0,
+            "deadline": "2022-06-24",
+            "education": "undergraduate",
+            "experience": "None",
+            "description": "Support month- end and year-end close process, Organize office files and information for proper retrieval or disposal, Follow up on incoming payments from accounts receivable",
+            "specifications": "Computer skills and proficient in MS -Office applications,Communication skill,Active team player"
+        }
+    ],
+    "profile": {
+      "name": "typicode"
+    }
+  }
