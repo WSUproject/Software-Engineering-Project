@@ -1,17 +1,19 @@
 const express = require("express");
 const db = require("./models");
 const app = express();
-const jobRoutes = require("./controllers/job.controller");
+const router = require("./routes");
 require("express-async-errors");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/jobs", jobRoutes);
+app.use("/api", router);
 
-app.use((err, req, res, next) => {
-  console.log(err);
-  res.status(err.status || 500).send("something went wrong");
+app.use((error, req, res, next) => {
+  console.log(error);
+  const status = error.statusCode || 500;
+  const message = error.message;
+  res.status(status).json({ error: true, message: message });
 });
 
 app.listen(3000, () => {
