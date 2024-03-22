@@ -1,34 +1,55 @@
-const {
-  createJob,
-  validateJob,
-  getAllJobs,
-  getJobById,
-} = require("../services/job.service");
-const express = require("express");
+const service = require("../services/job.service");
 
-const router = express.Router();
-
-router.post("/", validateJob, async (req, res, next) => {
+exports.createJob = async (req, res, next) => {
   try {
-    const jobDetails = req.body;
-    const data = await createJob(jobDetails);
+    const job = await service.createJob(req.body);
     res.status(201).json({
       message: "Job created successfully",
-      job: data,
+      job: job,
     });
   } catch (error) {
     next(error);
   }
-});
+};
 
-router.get("/", async (req, res, next) => {
-  const data = await getAllJobs();
-  res.send(data);
-});
+exports.getAllJobs = async (req, res, next) => {
+  try {
+    const jobs = await service.getAllJobs();
+    res.send(jobs);
+  } catch (error) {
+    next(error);
+  }
+};
 
-router.get("/:id", async (req, res, next) => {
-  const job = await getJobById(req.params.id);
-  return job;
-});
+exports.getJobById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const job = await service.getJobById(id);
+    res.send(job);
+  } catch (error) {
+    next(error);
+  }
+};
 
-module.exports = router;
+exports.deleteJobById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    service.deleteJobById(id);
+    res.send({ message: "Job deleted successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.updateJobById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    var udpatedJob = await service.updateJobById(id, req.body);
+    res.send({
+      message: "Job updated successfully",
+      udpatedJob,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
