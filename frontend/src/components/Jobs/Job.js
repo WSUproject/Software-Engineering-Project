@@ -7,24 +7,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
-// import { makeStyles } from "@mui/styles";
 import JobDetails from "./JobDetailsModal";
 import { Link } from "react-router-dom";
-
-// const useStyles = makeStyles((theme) => ({
-//   button: {
-//     // backgroundColor: "#3dc21b",
-//     // color: "#000000",
-//     width: "200px",
-//     cursor: "pointer",
-//     // padding: "16px 31px",
-//     fontSize: "14px",
-//     "&:hover": {
-//       backgroundColor: "#88d2ec",
-//       color: "#000000",
-//     },
-//   },
-// }));
 
 const baseURL = "http://localhost:8000/jobs";
 
@@ -41,7 +25,6 @@ const style = {
 };
 
 export default function JobCard() {
-  // const classes = useStyles();
   const [age, setAge] = React.useState("");
 
   const handleChange = (job) => {

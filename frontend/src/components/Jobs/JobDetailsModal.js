@@ -1,12 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Modal from "@mui/material/Modal";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { BsCalendarDate } from "react-icons/bs";
-import { BsCoin } from "react-icons/bs";
-import { BsClock } from "react-icons/bs";
-import Button from "@mui/material/Button";
 import "./JobModal.css";
 
 const style = {
