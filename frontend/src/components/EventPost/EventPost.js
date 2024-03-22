@@ -1,142 +1,160 @@
 import React, { useState } from 'react';
+import './CreateEventForm.css'; // Ensure you have this CSS file
 
-function EventPostForm() {
-    const [eventName, setEventName] = useState('');
-    const [eventOrganizer, setEventOrganizer] = useState('');
-    const [eventTag, setEventTag] = useState('');
-    const [date, setDate] = useState('');
-    const [startTime, setStartTime] = useState('');
-    const [endTime, setEndTime] = useState('');
-    const [state, setState] = useState('');
-    const [city, setCity] = useState('');
-    const [venue, setVenue] = useState('');
-    const [description, setDescription] = useState('');
+function CreateEventForm() {
+  const [eventData, setEventData] = useState({
+    eventName: '',
+    eventOrganizer: '',
+    eventTag: '',
+    date: '',
+    startTime: '',
+    endTime: '',
+    state: '',
+    city: '',
+    venue: '',
+    description: ''
+  });
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Here you would handle the form submission, like sending data to a server.
-        console.log('Event submitted:', {
-            eventName,
-            eventOrganizer,
-            eventTag,
-            date,
-            startTime,
-            endTime,
-            state,
-            city,
-            venue,
-            description
-        });
-    };
+  const [errors, setErrors] = useState({});
 
-    return (
-        <div className="container mt-3">
-            <h2>Create Event</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Event Name"
-                        value={eventName}
-                        onChange={(e) => setEventName(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Event Organizer"
-                        value={eventOrganizer}
-                        onChange={(e) => setEventOrganizer(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Event Tag"
-                        value={eventTag}
-                        onChange={(e) => setEventTag(e.target.value)}
-                    />
-                </div>
-                <div className="mb-3 row">
-                    <div className="col">
-                        <input
-                            type="date"
-                            className="form-control"
-                            value={date}
-                            onChange={(e) => setDate(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="col">
-                        <input
-                            type="time"
-                            className="form-control"
-                            value={startTime}
-                            onChange={(e) => setStartTime(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="col">
-                        <input
-                            type="time"
-                            className="form-control"
-                            value={endTime}
-                            onChange={(e) => setEndTime(e.target.value)}
-                            required
-                        />
-                    </div>
-                </div>
-                <div className="mb-3 row">
-                    <div className="col">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="State"
-                            value={state}
-                            onChange={(e) => setState(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="col">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="City"
-                            value={city}
-                            onChange={(e) => setCity(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="col">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Venue"
-                            value={venue}
-                            onChange={(e) => setVenue(e.target.value)}
-                            required
-                        />
-                    </div>
-                </div>
-                <div className="mb-3">
-                    <textarea
-                        className="form-control"
-                        placeholder="Description"
-                        rows="3"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    ></textarea>
-                </div>
-                <button type="submit" className="btn btn-primary">Create</button>
-                <button type="button" className="btn btn-secondary ms-2">Cancel</button>
-            </form>
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEventData({ ...eventData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let newErrors = {};
+    let formIsValid = true;
+
+    // Validate each field - check for empty values for simplicity
+    Object.entries(eventData).forEach(([key, value]) => {
+      if (!value.trim()) {
+        formIsValid = false;
+        newErrors[key] = `${key.charAt(0).toUpperCase() + key.slice(1).split(/(?=[A-Z])/).join(' ')} is required.`;
+      }
+    });
+
+    setErrors(newErrors);
+
+    if (formIsValid) {
+      console.log(eventData);
+      // Form is valid, submit the data
+    }
+  };
+
+  const handleCancel = () => {
+    // Reset the form fields and errors
+    setEventData({
+      eventName: '',
+      eventOrganizer: '',
+      eventTag: '',
+      date: '',
+      startTime: '',
+      endTime: '',
+      state: '',
+      city: '',
+      venue: '',
+      description: ''
+    });
+    setErrors({});
+  };
+
+  console.log(errors);
+
+  return (
+    <div className="create-event-form">
+      <h2>Create Event</h2>
+      <form onSubmit={handleSubmit}>
+      <div className="error-message">{errors["eventName"]}</div>
+        <input
+          type="text"
+          name="eventName"
+          placeholder="Event Name"
+          value={eventData.eventName}
+          onChange={handleChange}
+        />
+        <div className="error-message">{errors["eventOrganizer"]}</div>
+        <input
+          type="text"
+          name="eventOrganizer"
+          placeholder="Event Organizer"
+          value={eventData.eventOrganizer}
+          onChange={handleChange}
+        />
+        <div className="error-message">{errors["eventTag"]}</div>
+        <input
+          type="text"
+          name="eventTag"
+          placeholder="Event Tag"
+          value={eventData.eventTag}
+          onChange={handleChange}
+        />
+        <div className="error-message">{errors["date"]}</div>
+        <input
+          type="date"
+          name="date"
+          value={eventData.date}
+          onChange={handleChange}
+        />
+        <div className="error-message">{errors["startTime"]}</div>
+        <input
+          type="time"
+          name="startTime"
+          placeholder="Start Time"
+          value={eventData.startTime}
+          onChange={handleChange}
+        />
+        <div className="error-message">{errors["endTime"]}</div>
+        <input
+          type="time"
+          name="endTime"
+          placeholder="End Time"
+          value={eventData.endTime}
+          onChange={handleChange}
+        />
+        <div className="error-message">{errors["state"]}</div>
+        <input
+          type="text"
+          name="state"
+          placeholder="State"
+          value={eventData.state}
+          onChange={handleChange}
+        />
+        <div className="error-message">{errors["city"]}</div>
+        <input
+          type="text"
+          name="city"
+          placeholder="City"
+          value={eventData.city}
+          onChange={handleChange}
+        />
+        <div className="error-message">{errors["venue"]}</div>
+        <input
+          type="text"
+          name="venue"
+          placeholder="Venue"
+          value={eventData.venue}
+          onChange={handleChange}
+        />
+        <div className="error-message">{errors["description"]}</div>
+        <textarea
+          name="description"
+          placeholder="Description"
+          value={eventData.description}
+          onChange={handleChange}
+        ></textarea>
+        <div className="form-actions">
+          <button type="submit">Create</button>
+          <button type="button" onClick={handleCancel}>Cancel</button>
         </div>
-    );
+        {/* Display validation errors */}
+        {/* {Object.keys(errors).map((key) => (
+          <div key={key} className="error-message">{errors[key]}</div>
+        ))} */}
+      </form>
+    </div>
+  );
 }
 
-export default EventPostForm;
+export default CreateEventForm;

@@ -1,107 +1,156 @@
-import React from 'react';
-import './App.css'; // Make sure to create an appropriate App.css file for additional custom styling
+import React, { useState } from 'react';
+import './JobPostings.css'; // Make sure to create a CSS file with this name
 
-function JobPostForm() {
+const CreateJobPost = () => {
+  const [jobData, setJobData] = useState({
+    company: '',
+    post: '',
+    level: '',
+    vacancy: '',
+    type: '',
+    salary: '',
+    deadline: '',
+    state: '',
+    city: '',
+    venue: '',
+    education: '',
+    experience: '',
+    otherSpecification: '',
+    jobDescription: '',
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setJobData({ ...jobData, [name]: value });
+    if (!value.trim()) {
+      setErrors({ ...errors, [name]: `${name} is required.` });
+    } else {
+      let newErrors = { ...errors };
+      delete newErrors[name];
+      setErrors(newErrors);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Assume all fields are required for simplicity, check for empty fields
+    let newErrors = {};
+    let isValid = true;
+    Object.keys(jobData).forEach(key => {
+      if (!jobData[key].trim()) {
+        isValid = false;
+        newErrors[key] = `${key[0].toUpperCase() + key.slice(1)} is required.`;
+      }
+    });
+
+    setErrors(newErrors);
+
+    if (isValid) {
+      console.log('Submitted Data:', jobData);
+      // Handle the job post creation here, such as sending data to an API
+    }
+  };
+
+  const handleCancel = () => {
+    // Clear form and errors
+    setJobData({
+      company: '',
+      post: '',
+      level: '',
+      vacancy: '',
+      type: '',
+      salary: '',
+      deadline: '',
+      state: '',
+      city: '',
+      venue: '',
+      education: '',
+      experience: '',
+      otherSpecification: '',
+      jobDescription: '',
+    });
+    setErrors({});
+  };
+
   return (
-    <div className="job-post-form container">
-      <header>
-        {/* You can replace `a` tags with React Router `Link` if you are using React Router */}
-        <div className="logo">LOGO</div>
-        <input type="text" className="search-input" placeholder="Search" />
-        <nav>
-          <a href="/">Home</a> |
-          <a href="/events">Events</a> |
-          <a href="/jobs">Jobs</a> |
-          <a href="/accommodations">Accommodations</a>
-          <div className="auth-links">
-            <a href="/about">About</a> |
-            <a href="/contact">Contact</a> |
-            <a href="/login">Login</a> |
-            <a href="/signup">Signup</a>
-          </div>
-        </nav>
-      </header>
+    <div className='size'>
+    <div className="create-job-post">
+      <form onSubmit={handleSubmit}>
+        <h2>Create Vacancy</h2>
+        
+        {/* Input fields for job post */}
+        {/* Repeat this pattern for each field */}
+        <input type="text" name="company" placeholder="College/Company"
+               value={jobData.company} onChange={handleInputChange} />
+        {errors.company && <div className="error-message">{errors.company}</div>}
+        
+        {/* ... other fields ... */}
+      
 
-      <main>
-        <h1>Create Vacancy</h1>
-        <form>
-          <div className="form-group">
-            <label htmlFor="collegeCompany">College/Company</label>
-            <input type="text" id="collegeCompany" className="form-control" />
-          </div>
+<input type="text" name="post" placeholder="Post"
+       value={jobData.post} onChange={handleInputChange} />
+{errors.post && <div className="error-message">{errors.post}</div>}
 
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <label htmlFor="post">Post</label>
-              <input type="text" id="post" className="form-control" />
-            </div>
-            <div className="form-group col-md-6">
-              <label htmlFor="level">Level</label>
-              <input type="text" id="level" className="form-control" />
-            </div>
-          </div>
+<input type="text" name="level" placeholder="Level"
+       value={jobData.level} onChange={handleInputChange} />
+{errors.level && <div className="error-message">{errors.level}</div>}
 
-          <div className="form-row">
-            <div className="form-group col-md-3">
-              <label htmlFor="vacancy">Vacancy</label>
-              <input type="number" id="vacancy" className="form-control" />
-            </div>
-            <div className="form-group col-md-3">
-              <label htmlFor="type">Type</label>
-              <input type="text" id="type" className="form-control" />
-            </div>
-            <div className="form-group col-md-3">
-              <label htmlFor="salary">Salary</label>
-              <input type="text" id="salary" className="form-control" />
-            </div>
-            <div className="form-group col-md-3">
-              <label htmlFor="deadline">Deadline</label>
-              <input type="date" id="deadline" className="form-control" />
-            </div>
-          </div>
+<input type="text" name="vacancy" placeholder="Vacancy"
+       value={jobData.vacancy} onChange={handleInputChange} />
+{errors.vacancy && <div className="error-message">{errors.vacancy}</div>}
 
-          <div className="form-group">
-            <label htmlFor="state">State</label>
-            <input type="text" id="state" className="form-control" />
-          </div>
+<input type="text" name="type" placeholder="Type"
+       value={jobData.type} onChange={handleInputChange} />
+{errors.type && <div className="error-message">{errors.type}</div>}
 
-          <div className="form-row">
-            <div className="form-group col-md-6">
-              <label htmlFor="city">City</label>
-              <input type="text" id="city" className="form-control" />
-            </div>
-            <div className="form-group col-md-6">
-              <label htmlFor="venue">Venue</label>
-              <input type="text" id="venue" className="form-control" />
-            </div>
-          </div>
+<input type="text" name="salary" placeholder="Salary"
+       value={jobData.salary} onChange={handleInputChange} />
+{errors.salary && <div className="error-message">{errors.salary}</div>}
 
-          <div className="form-group">
-            <label htmlFor="education">Education</label>
-            <input type="text" id="education" className="form-control" />
-          </div>
+<input type="text" name="deadline" placeholder="Deadline"
+       value={jobData.deadline} onChange={handleInputChange} />
+{errors.deadline && <div className="error-message">{errors.deadline}</div>}
 
-          <div className="form-group">
-            <label htmlFor="experience">Experience</label>
-            <input type="text" id="experience" className="form-control" />
-          </div>
+<input type="text" name="state" placeholder="State"
+       value={jobData.state} onChange={handleInputChange} />
+{errors.state && <div className="error-message">{errors.state}</div>}
 
-          <div className="form-group">
-            <label htmlFor="otherSpecification">Other Specification</label>
-            <textarea id="otherSpecification" className="form-control" rows="3"></textarea>
-          </div>
+<input type="text" name="city" placeholder="City"
+       value={jobData.city} onChange={handleInputChange} />
+{errors.city && <div className="error-message">{errors.city}</div>}
 
-          <div className="form-group">
-            <label htmlFor="jobDescription">Job Description</label>
-            <textarea id="jobDescription" className="form-control" rows="3"></textarea>
-          </div>
+<input type="text" name="venue" placeholder="Venue"
+       value={jobData.venue} onChange={handleInputChange} />
+{errors.venue && <div className="error-message">{errors.venue}</div>}
 
-          <button type="submit" className="btn btn-primary">Create</button>
-          <button type="button" className="btn btn-secondary">Cancel</button>
-        </form>
-      </main>
+<input type="text" name="education" placeholder="Education"
+       value={jobData.education} onChange={handleInputChange} />
+{errors.education && <div className="error-message">{errors.education}</div>}
+
+<input type="text" name="experience" placeholder="Experience"
+       value={jobData.experience} onChange={handleInputChange} />
+{errors.experience && <div className="error-message">{errors.experience}</div>}
+
+
+<textarea name="otherSpecification" placeholder="Other Specification"
+          value={jobData.otherSpecification} onChange={handleInputChange}></textarea>
+{errors.otherSpecification && <div className="error-message">{errors.otherSpecification}</div>}
+
+        <textarea name="jobDescription" placeholder="Job Description"
+                  value={jobData.jobDescription} onChange={handleInputChange}></textarea>
+        {errors.jobDescription && <div className="error-message">{errors.jobDescription}</div>}
+        
+        {/* Form buttons */}
+        <div className="form-buttons">
+          <button type="submit">Create</button>
+          <button type="button" onClick={handleCancel}>Cancel</button>
+        </div>
+      </form>
+    </div>
     </div>
   );
-}
+};
 
-export default Job
+export default CreateJobPost;

@@ -1,0 +1,75 @@
+.create-event-form {
+  width: 100%;
+  max-width: 600px; /* Adjust the max width as needed */
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.create-event-form h2 {
+  text-align: center;
+}
+
+.create-event-form form {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two columns */
+  grid-gap: 10px;
+}
+
+.create-event-form input[type="text"],
+.create-event-form input[type="date"],
+.create-event-form input[type="time"],
+.create-event-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.create-event-form textarea {
+  grid-column: span 2; /* Make textarea span across two columns */
+  height: 100px; /* Set the height of the textarea */
+}
+
+.create-event-form .form-actions {
+  grid-column: span 2; /* Align the buttons to span across two columns */
+  display: flex;
+  justify-content: space-around; /* This will space the buttons nicely */
+  margin-top: 20px;
+}
+
+.create-event-form .form-actions button {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.create-event-form .error-message {
+  color: #ff3860;
+  font-size: 0.8rem;
+  grid-column: span 2; /* Align the error message to span across two columns */
+}
+
+/* Button styles */
+.create-event-form .form-actions .button-create {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.create-event-form .form-actions .button-cancel {
+  background-color: #f44336;
+  color: white;
+}
+
+.create-event-form .form-actions button:hover {
+  opacity: 0.9; /* Add a slight interaction effect on hover */
+}
+
+.create-event-form input[type="text"], .create-event-form input[type="date"], .create-event-form input[type="time"], .create-event-form textarea {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

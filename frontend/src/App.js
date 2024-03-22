@@ -8,6 +8,9 @@ import Job from "./components/Jobs/Job";
 import Accommodation from "./components/Accommodations/Accommodations";
 import MainI from "./components/Events/MainI";
 import NotFoundView from "./components/Error/Error404";
+import JobPostForm from "./components/JobPost/JobPost";
+import AccomodationPostForm from "./components/AccomodationPost/Accommodationpost";
+import EventPostForm from "./components/EventPost/EventPost";
 
 
 function App() {
@@ -22,6 +25,9 @@ function App() {
         <Route path="/jobs" element={<Job />} />
         <Route path="/accommodations" element={<Accommodation />} />
         <Route path="/events" element={<MainI />} />
+        <Route path="/jobs/CreateJobForm" element={<JobPostForm />} />
+        <Route path="/accommodations/CreateAccommodationForm" element={<AccomodationPostForm />} />
+        <Route path="/events/CreateEventForm" element={<EventPostForm />} />
         <Route path="*" element={<NotFoundView />} />
 
       </Routes>
