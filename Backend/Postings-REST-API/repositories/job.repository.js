@@ -1,12 +1,11 @@
 const db = require("../db");
-const Jobs = require("../models/jobs")
-
-module.exports.create = async (jobDetails) => {
+const { Jobs } = require("../models");
+    module.exports.create = async (jobDetails) => {
   try {
     const job = await Jobs.create(jobDetails);
     return job;
   } catch (error) {
-    throw new Error("Error creating the job.");
+    throw new Error(error);
   }
 };
 

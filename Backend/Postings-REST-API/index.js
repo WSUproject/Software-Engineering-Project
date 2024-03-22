@@ -5,19 +5,18 @@ const jobRoutes = require("./controllers/job.controller");
 require("express-async-errors");
 
 app.use(express.json());
-
-
-
-db.sequelize.sync().then((req) => {
-  app.listen(3000, () => {
-    console.log("server is running");
-  });
-});
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/jobs", jobRoutes);
 
 app.use((err, req, res, next) => {
-  console.log("inside this middleware");
-  console.log("error is error" + err);
+  console.log(err);
   res.status(err.status || 500).send("something went wrong");
+});
+
+app.listen(3000, () => {
+  console.log("server is running at http://localhost:3000");
+  db.sequelize.sync().then((req) => {
+    console.log("DB synchronized");
+  });
 });
