@@ -7,6 +7,8 @@ import Contact from "./components/ContactUs/Contact";
 import Job from "./components/Jobs/Job";
 import Accommodation from "./components/Accommodations/Accommodations";
 import MainI from "./components/Events/MainI";
+import NotFoundView from "./components/Error/Error404";
+
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/jobs" element={<Job />} />
         <Route path="/accommodations" element={<Accommodation />} />
         <Route path="/events" element={<MainI />} />
+        <Route path="*" element={<NotFoundView />} />
+
       </Routes>
       <Footer />
     </Router>
