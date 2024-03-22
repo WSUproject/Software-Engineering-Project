@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  class Jobs extends Model {
+  class Events extends Model {
     static associate() {
       //define associations here
     }
@@ -11,13 +11,13 @@ module.exports = (sequelize) => {
     }
   }
 
-  Jobs.init(
+  Events.init(
     {
       uuid: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
       },
-      institutionName: {
+      eventName: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -27,35 +27,28 @@ module.exports = (sequelize) => {
       imageURL: {
         type: DataTypes.STRING,
       },
-      post: {
+      eventOrganizer: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           notEmpty: true,
         },
       },
-      level: {
+      eventTag: {
         type: DataTypes.STRING,
       },
-      vacancy: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-          notEmpty: true,
-        },
-      },
-      type: {
-        type: DataTypes.STRING,
-      },
-      salary: {
-        type: DataTypes.INTEGER,
-      },
-      deadline: {
+      date: {
         type: DataTypes.DATE,
         allowNull: false,
         validate: {
           notEmpty: true,
         },
+      },
+      startTime: {
+        type: DataTypes.STRING,
+      },
+      endTime: {
+        type: DataTypes.STRING,
       },
       state: {
         type: DataTypes.STRING,
@@ -74,24 +67,15 @@ module.exports = (sequelize) => {
       venue: {
         type: DataTypes.STRING,
       },
-      education: {
-        type: DataTypes.STRING,
-      },
-      experience: {
-        type: DataTypes.STRING,
-      },
-      specifications: {
-        type: DataTypes.STRING,
-      },
       description: {
         type: DataTypes.STRING,
       },
     },
     {
       sequelize,
-      modelName: "Jobs",
-      tableName: "jobs",
+      modelName: "Events",
+      tableName: "events",
     }
   );
-  return Jobs;
+  return Events;
 };
