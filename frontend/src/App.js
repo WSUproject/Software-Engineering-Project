@@ -6,6 +6,7 @@ import Home from "./components/Home/home";
 import Contact from "./components/ContactUs/Contact";
 import Job from "./components/Jobs/Job";
 import Accommodation from "./components/Accommodations/Accommodations";
+import MainI from "./components/Events/MainI";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/contactus" element={<Contact />} />
         <Route path="/jobs" element={<Job />} />
         <Route path="/accommodations" element={<Accommodation />} />
+        <Route path="/events" element={<MainI />} />
       </Routes>
       <Footer />
     </Router>

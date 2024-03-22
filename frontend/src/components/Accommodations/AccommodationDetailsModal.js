@@ -51,7 +51,7 @@ export default function JobDetails(props) {
                 <h3>{accommodationDetails[0].roomType}</h3>
               </div>
               <div className="titleInfo">
-                <h3>{accommodationDetails[0].rent}</h3>
+                <h3>{"$" + accommodationDetails[0].rent}</h3>
               </div>
               <div className="titleInfo">
                 <h3>Move In: {accommodationDetails[0].moveIn}</h3>
