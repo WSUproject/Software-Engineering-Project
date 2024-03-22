@@ -11,6 +11,6 @@ router.get("/:id", eventController.getEventById);
 
 router.delete("/:id", eventController.deleteEventById);
 
-router.put("/:id", eventController.updateEventById);
+router.put("/:id", createEventValidator, eventController.updateEventById);
 
 module.exports = router;

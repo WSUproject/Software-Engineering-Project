@@ -2,37 +2,35 @@ const { body, validationResult } = require("express-validator");
 
 const jobValidator = [
   [
-    body("institutionName")
+    body("eventName")
       .exists()
-      .withMessage("Institution name is missing")
+      .withMessage("Event name is missing")
       .notEmpty()
-      .withMessage("Institution name is empty")
+      .withMessage("Event name is empty")
       .isString()
-      .withMessage("Institution name must be a string"),
+      .withMessage("Event name must be a string"),
     body("imageURL").isString().withMessage("imageURL name must be a string"),
-    body("post")
+    body("eventOrganizer")
       .exists()
-      .withMessage("Post is missing")
+      .withMessage("Event Organizer is missing")
       .notEmpty()
-      .withMessage("Post is empty")
+      .withMessage("Event Organizer is empty")
       .isString()
-      .withMessage("Post must be a string"),
-    body("level").isString().withMessage("level must be a string"),
-    body("vacancy")
+      .withMessage("Event Organizer must be a string"),
+    body("eventTag").isString().withMessage("Event Tag must be a string"),
+    body("date")
       .exists()
-      .withMessage("Vacancy is missing")
+      .withMessage("Date is missing")
       .notEmpty()
-      .withMessage("Vacancy is empty")
-      .isNumeric()
-      .withMessage("Vacancy must be a number"),
-    body("salary").isNumeric().withMessage("Salary must be a number"),
-    body("deadline")
-      .exists()
-      .withMessage("Deadline is missing")
-      .notEmpty()
-      .withMessage("Deadline is empty")
+      .withMessage("Date is empty")
       .matches(/^\d{4}-\d{2}-\d{2}$/, "i")
       .withMessage("Date must be in YYYY-MM-DD format"),
+    body("startTime")
+      .matches(/^([01]?[0-9]|2[0-3]):([0-5][0-9])$/, "i")
+      .withMessage("Start Time must be in HH:MM 24 hours format"),
+    body("endTime")
+      .matches(/^([01]?[0-9]|2[0-3]):([0-5][0-9])$/, "i")
+      .withMessage("End Time must be in HH:MM 24 hours format"),
     body("state")
       .exists()
       .withMessage("State is missing")
@@ -48,11 +46,6 @@ const jobValidator = [
       .isString()
       .withMessage("City must be a string"),
     body("venue").isString().withMessage("Venue must be a string"),
-    body("education").isString().withMessage("Education must be a string"),
-    body("experience").isString().withMessage("Experience must be a string"),
-    body("specifications")
-      .isString()
-      .withMessage("Specifications must be a string"),
     body("description").isString().withMessage("Description must be a string"),
   ],
   (req, res, next) => {
