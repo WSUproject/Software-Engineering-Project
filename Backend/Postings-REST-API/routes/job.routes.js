@@ -1,16 +1,16 @@
-const eventController = require("../controllers/event.controller");
-const createEventValidator = require("../validators/create-event.validator");
+const jobController = require("../controllers/job.controller");
+const createJobValidator = require("../validators/create-job.validator");
 const express = require("express");
 
 const router = express.Router();
-router.post("/", createEventValidator, eventController.createEvent);
+router.post("/", createJobValidator, jobController.createJob);
 
-router.get("/", eventController.getAllEvents);
+router.get("/", jobController.getAllJobs);
 
-router.get("/:id", eventController.getEventById);
+router.get("/:id", jobController.getJobById);
 
-router.delete("/:id", eventController.deleteEventById);
+router.delete("/:id", jobController.deleteJobById);
 
-router.put("/:id", eventController.updateEventById);
+router.put("/:id", createJobValidator, jobController.updateJobById);
 
 module.exports = router;
