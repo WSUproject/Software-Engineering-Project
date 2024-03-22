@@ -1,15 +1,15 @@
-const jobRepository = require("../repositories/job.repository");
+const { create } = require("../repositories/job.repository");
 
 module.exports.createJob = async (jobDetails) => {
   try {
-    const job = await jobRepository.create(jobDetails);
+    const job = await create(jobDetails);
     return job;
   } catch (error) {
-    throw new Error("Error in creating job service.");
+    throw new Error(error);
   }
 };
 
-module.exports.validateJob = (jobDetails) => {
+module.exports.validateJob = (req, res, next) => {
   const {
     institution_name,
     post,
@@ -31,10 +31,16 @@ module.exports.validateJob = (jobDetails) => {
 
   if (!institution_name) errors.push("Institution name is required.");
   if (!post) errors.push("Post is required.");
-  if (!level) errors.push("Level is required.");
-  if (typeof vacancy !== "number") errors.push("Vacancy must be a number.");
+  if (vacancy)
+    if (typeof vacancy !== "number") errors.push("Vacancy must be a number.");
   if (!type) errors.push("Type is required.");
-  if (typeof salary !== "number") errors.push("Salary must be a number.");
+  if (salary)
+    if (typeof salary !== "number") errors.push("Salary must be a number.");
+  if (!deadline) errors.push("Deadline is required.");
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(deadline))
+    errors.push("Deadline must be in YYYY-MM-DD format.");
+  if (!state) errors.push("State is required.");
+  if (!city) errors.push("City is required.");
 
   if (errors.length) {
     return res.status(400).json({ errors });
