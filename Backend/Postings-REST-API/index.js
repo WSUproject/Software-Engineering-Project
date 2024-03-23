@@ -6,6 +6,7 @@ const routes = require("./routes");
 const authRoutes = require("./routes/authentication.routes.js");
 const cors = require("cors");
 const corsOptions = require("./utils/corsOption");
+const { validateToken } = require("./utils/authenticationHandler.js");
 require("express-async-errors");
 
 app.use(cors(corsOptions));
@@ -14,7 +15,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/auth", authRoutes);
-
+app.use(validateToken);
 app.use("/api", routes);
 
 app.use((error, req, res, next) => {
