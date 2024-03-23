@@ -1,13 +1,21 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const db = require("./models");
 const app = express();
-const router = require("./routes");
+const routes = require("./routes");
+const authRoutes = require("./routes/authentication.routes.js");
+const cors = require("cors");
+const corsOptions = require("./utils/corsOption");
 require("express-async-errors");
 
+app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api", router);
+app.use("/auth", authRoutes);
+
+app.use("/api", routes);
 
 app.use((error, req, res, next) => {
   console.log(error);
