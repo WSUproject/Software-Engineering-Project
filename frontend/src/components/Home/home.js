@@ -1,25 +1,19 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./home.css";
 
 const Home = (props) => {
   return (
     <>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="home">
+        <div class="container">
+          <img src="/Images/Logo/logo_NoBG.png" alt="logo" />
+          <div class="text-overlay">
+            <h2>
+              "Discover Events, Jobs, and Accommodations – Everything You Need,
+              All in One Place!"
+            </h2>
+          </div>
+        </div>
       </div>
     </>
   );
