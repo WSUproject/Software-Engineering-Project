@@ -11,6 +11,23 @@
         "author": "kunal"
       }
     ],
+
+    "users":[ {
+      "userID": 1012,
+      "firstName": "John",
+      "lastName": "Doe",
+      "userName": "John Doe",
+      "primaryPhone": "9877009966",
+      "secondaryPhone": "",
+      "email": "testuser@gmail.com",
+      "state": "Maryland",
+      "city": "Ocean City",
+      "street": "City Lane",
+      "registeredDate": "0001-01-01T00:00:00",
+      "profileURL": "sss",
+      "roleID": 2,
+      "roles": null
+    }],
     "accommodations": [
       {
           "accommodationID": 1004,
