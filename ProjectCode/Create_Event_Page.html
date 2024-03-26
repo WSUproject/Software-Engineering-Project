@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="Home_Page.css">
+</head>
+<style>
+main div {
+	border: 1px solid black; 
+	padding: 10px; 
+	margin-right: 100px;	
+	
+}
+
+input {
+	margin-top: 25px;
+}
+
+main {
+	display: flex; 
+	flex-display: column;
+}
+</style>
+<body>
+<form style="border: 1px solid black; padding: 10px;">
+<img src="favicon.ico" width="50" height="50">
+<ul>
+<li><input type="search" id="searchBox" placeholder="search"></li>
+<li><a href=""></a>About</li>
+<li>|</li>
+<li><a href=""></a>Contact</li>
+<li>|</li>
+<li><a href="file:///C:/Users/Chris/Desktop/College%20Work/Intro%20to%20Software%20Engineering/Software-Engineering-Project-main/Software-Engineering-Project-main/ProjectCode/Login_Page.html">Login</a></li>
+<li>|</li>
+<li><a href=""></a>Signup</li>
+</ul>
+</form>
+<nav>
+<ul>
+<li><a href="file:///C:/Users/Chris/Desktop/College%20Work/Intro%20to%20Software%20Engineering/Software-Engineering-Project-main/Software-Engineering-Project-main/ProjectCode/Home_Page.html">Home</a></li>
+<li>|</li>
+<li><a href="file:///C:/Users/Chris/Desktop/College%20Work/Intro%20to%20Software%20Engineering/Software-Engineering-Project-main/Software-Engineering-Project-main/ProjectCode/Events_Page.html">Events</a></li>
+<li>|</li>
+<li><a href="file:///C:/Users/Chris/Desktop/College%20Work/Intro%20to%20Software%20Engineering/Software-Engineering-Project-main/Software-Engineering-Project-main/ProjectCode/Job_Posts_Page.html">Jobs</a></li>
+<li>|</li>
+<li><a href="">Accommodations</a></li>
+</ul>
+</nav>
+<div>
+<h1>Create Event</h1>
+<input type="text" style="width: 1340px;" id="eventNameBox" placeholder="Event Name">
+<input type="text" style="width: 670px;" id="eventOrgBox" placeholder="Event Organizer">
+<input type="text" style="width: 660px;" id="eventTagBox" placeholder="Event Tag">
+<input type="text" style="width: 400px;" id="dateBox" placeholder="Date">
+<input type="text" style="margin-left: 50px; width: 400px;" id="startTimeBox" placeholder="Start Time">
+<input type="text" style="margin-left: 50px; width: 400px;" id="endTimeBox" placeholder="End Time">
+<input type="text" style="width: 400px;" id="stateBox" placeholder="State">
+<input type="text" style="margin-left: 50px; width: 400px;" id="cityBox" placeholder="City">
+<input type="text" style="margin-left: 50px; width: 400px;" id="venueBox" placeholder="Venue">
+<textarea style="margin-top: 20px;" id="descriptionArea" name="descriptionArea" rows="4" cols="190"></textarea>
+<button style="margin-top: 20px;" id="createEventButton" type="submit" value="Create Event" onclick="return showEvent()">Create Event</button>
+<a href="file:///C:/Users/Chris/Desktop/College%20Work/Intro%20to%20Software%20Engineering/Software-Engineering-Project-main/Software-Engineering-Project-main/ProjectCode/Events_Page.html">
+<button style="margin-top: 20px;" id="cancelButton" type="button" value="Cancel">Cancel</button>
+</a>
+</div>
+<script>
+//document.getElementById("createEventButton").onclick = function(){
+function showEvent(){
+	//send frontend values to backend(the database)
+	//database will call the functions and process the data
+	//the URL to our database is https://github.com/WSUproject/Software-Engineering-Project/blob/main/Backend/Postings-REST-API/db.js
+	//the URL to make API requests to our database is https://github.com/WSUproject/Software-Engineering-Project/blob/main/Backend/Postings-REST-API/controllers/event.controller.js
+	//then put the data in the database
+	//once data is posted in database
+	//then we get to view the data in the events list
+	var eventName = document.getElementById("eventNameBox").value;
+	var eventOrg = document.getElementById("eventOrgBox").value;
+	var eventTag = document.getElementById("eventTagBox").value;
+	var date = document.getElementById("dateBox").value;
+	var startTime = document.getElementById("startTimeBox").value;
+	var endTime = document.getElementById("endTimeBox").value;
+	var state = document.getElementById("stateBox").value;
+	var city = document.getElementById("cityBox").value;
+	var venue = document.getElementById("venueBox").value;
+	var description = document.getElementById("descriptionArea").value;
+	window.location.href = "file:///C:/Users/Chris/Desktop/College%20Work/Intro%20to%20Software%20Engineering/Software-Engineering-Project-main/Software-Engineering-Project-main/ProjectCode/Events_Page.html";
+	return false;
+}
+
+</script>
+</body>
+
+</html>
