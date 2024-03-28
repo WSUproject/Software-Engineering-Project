@@ -7,8 +7,25 @@
 </head>
 <style>
 main img {
+	border: 1px solid black;
+	margin-left: 50px;
+	padding: 100px;
+	width: 200px;
 	
 }
+
+main ul {
+	border: 1px solid black;
+	height: 100px;
+	margin-left: 500px;
+	text-align: right;
+}
+
+#dateTime {
+	padding-right: 250px;
+	display: inline;
+}
+
 </style>
 <body>
 <form style="border: 1px solid black; padding: 10px;">
@@ -36,12 +53,14 @@ main img {
 </ul>
 </nav>
 <main>
-<div>
-<p>Date</p>
+<button style="margin-top: 20px; width: 50px;" id="backButton" type="button" value="Back">Back</button>
+<ul>
+<li id="dateTime">Date</li>
+<li id="dateTime">Time</li>
+</ul>
 <img src="http://placehold.it/150x150" alt="Dummy Image"/>
 <p>Location</p>
 <p>Title</p>	
-</div>
 </main>
 </body>
 
