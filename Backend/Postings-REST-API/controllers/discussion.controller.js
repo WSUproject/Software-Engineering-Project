@@ -50,7 +50,7 @@ exports.getDiscussionById = async (req, res, next) => {
 exports.deleteDiscussionById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    service.deleteDiscussionById(id);
+    service.deleteDiscussionById(id, req.user.uuid);
     res.send({ message: "Discussion deleted successfully" });
   } catch (error) {
     next(error);

@@ -1,4 +1,5 @@
 const discussionRepository = require("../repositories/discussion.repository");
+const ownerValidation = require("../utils/ownerUpdateDeleteValidator");
 
 module.exports.createDiscussion = async (discussionDetails) => {
   try {
@@ -39,8 +40,11 @@ module.exports.getDiscussionById = async (id) => {
   }
 };
 
-module.exports.deleteDiscussionById = async (id) => {
+module.exports.deleteDiscussionById = async (id, user_uuid) => {
   try {
+    const data = await discussionRepository.getDiscussionById(id);
+    if (!ownerValidation(user_uuid, data))
+      throw new Error("Unable to delete discussion created by other user");
     const result = await discussionRepository.deleteDiscussionById(id);
     if (result === 0) throw new Error("No discussion with given ID found");
   } catch (error) {
@@ -50,6 +54,9 @@ module.exports.deleteDiscussionById = async (id) => {
 
 module.exports.updateDiscussionById = async (id, discussionDetails) => {
   try {
+    const data = await discussionRepository.getDiscussionById(id);
+    if (!ownerValidation(user_uuid, data))
+      throw new Error("Unable to delete discussion created by other user");
     const result = await discussionRepository.updateDiscussionById(
       id,
       discussionDetails
