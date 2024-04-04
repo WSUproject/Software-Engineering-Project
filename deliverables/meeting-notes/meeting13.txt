@@ -1,0 +1,11 @@
+GroupMates Present:
+  Chris Young
+  Saurav Sitoula
+  Aashik Bhattarai
+  Rohan Rajbhandari
+
+Met at: Intro to Software Engineering Class
+Date of Meeting: 4/4/2024 at 12:10PM
+Description of Meeting:
+We discussed that we still have to integrate the frontend and backend. We also mentioned that we're going to assign who's going to talk about what once we've completed the project
+which should be completed by April 7th.
