@@ -12,6 +12,8 @@ import JobPostForm from "./components/JobPost/JobPost";
 import AccomodationPostForm from "./components/AccomodationPost/Accommodationpost";
 import EventPostForm from "./components/EventPost/EventPost";
 import UserProfile from "./components/UserProfile/UserProfile";
+import LoginForm from "./components/Login/login";
+import SignupForm from "./components/Signup/Signup";
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/" element={<Home />} />
+        <Route path="/sign-in" element={<LoginForm />} />
         <Route path="/about" element={<About />} />
         <Route path="/contactus" element={<Contact />} />
         <Route path="/jobs" element={<Job />} />

@@ -3,6 +3,8 @@ import axios from "axios";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import "./JobModal.css";
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 const style = {
   position: "absolute",
@@ -132,6 +134,9 @@ export default function JobDetails(props) {
                 })}
               </ul>
             </div>
+            <Link to="/apply" style={{ textDecoration: "none" }}>
+              <Button>Apply</Button>
+            </Link>
           </div>
         </Box>
       </Modal>
