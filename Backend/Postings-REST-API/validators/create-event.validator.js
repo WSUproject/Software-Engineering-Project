@@ -1,6 +1,6 @@
 const { body, validationResult } = require("express-validator");
 
-const jobValidator = [
+const eventValidator = [
   [
     body("eventName")
       .exists()
@@ -58,4 +58,4 @@ const jobValidator = [
   },
 ];
 
-module.exports = jobValidator;
+module.exports = eventValidator;
