@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 import JobDetails from "./JobDetailsModal";
 import { Link } from "react-router-dom";
 
-const baseURL = "http://localhost:8000/jobs";
+const baseURL = "http://127.0.0.1:3000/api/jobs";
 
 const style = {
   position: "absolute",
@@ -48,7 +48,7 @@ export default function JobCard() {
 
   const jobs = jobpost.map((data) => {
     return (
-      <div key={data.id}>
+      <div key={data.uuid}>
         <div className="jobCard">
           <img src={data.jobBanner} alt="myPic" className="jobCard_img" />
 
@@ -61,7 +61,7 @@ export default function JobCard() {
 
             <div>
               {/* <button onClick={handleOpen}> View Details</button> */}
-              <JobDetails id={data.id} />
+              <JobDetails id={data.uuid} />
             </div>
           </div>
         </div>

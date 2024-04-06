@@ -31,7 +31,7 @@ export default function EventDetails(props) {
   React.useEffect(() => {
     axios
 
-      .get(`http://localhost:8000/events?eventID=${props.id}`)
+      .get(`http://127.0.0.1:3000/api/events/${props.id}`)
       .then((response) => {
         seteventDetails(response.data);
         console.log(response);
@@ -51,7 +51,7 @@ export default function EventDetails(props) {
           <div className="parent">
             <div className="div1">
               <img
-                src={eventDetails[0].banner}
+                src={eventDetails.imageURL}
                 alt="myPic"
                 className="cards_img"
               />
@@ -60,26 +60,26 @@ export default function EventDetails(props) {
                   marginTop: "5px",
                 }}
               >
-                {eventDetails[0].eventName}
+                {eventDetails.eventName}
               </h2>
             </div>
             <div className="div2">
               <div className="date">
                 <BsCalendarDate fontSize="large" className="icons" />
                 <Typography className="iconDes">
-                  {eventDetails[0].date}
+                  {eventDetails.date.split("T")[0]}
                 </Typography>
               </div>
               <div className="time">
                 <BsClock fontSize="large" className="icons" />
                 <Typography className="iconDes">
-                  {eventDetails[0].startTime} - {eventDetails[0].endTime}
+                  {eventDetails.startTime} - {eventDetails.endTime}
                 </Typography>
               </div>
               <div className="cost">
                 <BsCoin fontSize="large" className="icons" />
                 <Typography className="iconDes">
-                  {"$" + eventDetails[0].cost}
+                  {"$" + eventDetails.cost}
                 </Typography>
               </div>
             </div>
@@ -87,29 +87,29 @@ export default function EventDetails(props) {
               <h4 style={{ paddingLeft: "1rem" }}>About Event</h4>
               <div className="div5">
                 <h4 style={{ paddingLeft: "1rem" }}>
-                  Organizer: {eventDetails[0].organizer}
+                  Organizer: {eventDetails.eventOrganizer}
                 </h4>
                 <div
                   style={{
                     padding: "1rem",
                   }}
                 >
-                  {eventDetails[0].description}
+                  {eventDetails.description}
                 </div>
               </div>
               <div className="div6">
                 <h4 style={{ paddingLeft: "1rem" }}>Location</h4>
                 <div className="loc">
                   <b>State: &nbsp; &nbsp; &nbsp;</b>
-                  {eventDetails[0].state}
+                  {eventDetails.state}
                 </div>
                 <div className="loc">
                   <b>City: &nbsp; &nbsp; &nbsp; &nbsp;</b>
-                  {eventDetails[0].city}
+                  {eventDetails.city}
                 </div>
                 <div className="loc">
                   <b>Venue: &nbsp; &nbsp;</b>
-                  {eventDetails[0].venue}
+                  {eventDetails.venue}
                 </div>
               </div>
             </div>

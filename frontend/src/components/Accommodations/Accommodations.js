@@ -5,7 +5,7 @@ import "./acc.css";
 import AccommodationDetails from "./AccommodationDetailsModal";
 import { Link } from "react-router-dom";
 
-const baseURL = "http://localhost:8000/accommodations";
+const baseURL = "http://127.0.0.1:3000/api/accommodations";
 
 const style = {
   position: "absolute",
@@ -38,7 +38,7 @@ export default function Ncard() {
   if (!accommodationPost) return null;
 
   const accommodations = accommodationPost.map((data) => {
-    console.log(data.accommodationID);
+    console.log(data.uuid);
     return (
       <div className="card" key={data.accommodationID}>
         <img src={data.accommodationBanner} alt="myPic" className="card_img" />
@@ -46,10 +46,10 @@ export default function Ncard() {
         <div className="card_info">
           <h2 className="event_name">{data.roomType} </h2>
 
-          <h3 className="event_date">{data.city} </h3>
-          <h3 className="event_location">{data.state} </h3>
+          <h3 className="event_date">{"$" + data.rent} </h3>
+          <h3 className="event_location">{data.location} </h3>
           <div>
-            <AccommodationDetails id={data.accommodationID} />
+            <AccommodationDetails id={data.uuid} />
           </div>
         </div>
       </div>

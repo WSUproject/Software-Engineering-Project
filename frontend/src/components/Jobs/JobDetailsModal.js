@@ -28,7 +28,7 @@ export default function JobDetails(props) {
   // http://localhost:8000/jobs?id=1
 
   React.useEffect(() => {
-    axios.get(`http://localhost:8000/jobs?id=${props.id}`).then((response) => {
+    axios.get(`http://127.0.0.1:3000/api/jobs/${props.id}`).then((response) => {
       setjobDetails(response.data);
       console.log("Response", response);
     });
@@ -53,63 +53,63 @@ export default function JobDetails(props) {
             <div class="div2j">
               <b>:</b>
             </div>
-            <div class="div3j">{jobDetails[0].institution_name}</div>
+            <div class="div3j">{jobDetails.institutionName}</div>
             <div class="div4j">
               <b>Post</b>
             </div>
             <div class="div5j">
               <b>:</b>
             </div>
-            <div class="div6j"> {jobDetails[0].post}</div>
+            <div class="div6j"> {jobDetails.post}</div>
             <div class="div7j">
               <b>Job Level</b>
             </div>
             <div class="div8j">
               <b>:</b>
             </div>
-            <div class="div9j">{jobDetails[0].level} </div>
+            <div class="div9j">{jobDetails.level} </div>
             <div class="div10j">
               <b>Vacancies</b>
             </div>
             <div class="div11j">
               <b>:</b>
             </div>
-            <div class="div12j">{jobDetails[0].vacancy} </div>
+            <div class="div12j">{jobDetails.vacancy} </div>
             <div class="div13j">
               <b>Employment Type</b>
             </div>
             <div class="div14j">
               <b>:</b>
             </div>
-            <div class="div15j"> {jobDetails[0].type}</div>
+            <div class="div15j"> {jobDetails.type}</div>
             <div class="div16j">
               <b>Salary</b>
             </div>
             <div class="div17j">
               <b>:</b>
             </div>
-            <div class="div18j">${jobDetails[0].salary} </div>
+            <div class="div18j">${jobDetails.salary} </div>
             <div class="div19j">
               <b>Appication Deadline</b>
             </div>
             <div class="div20j">
               <b>:</b>
             </div>
-            <div class="div21j">{jobDetails[0].deadline} </div>
+            <div class="div21j">{jobDetails.deadline.split("T")[0]} </div>
             <div class="div22j">
               <b>Education Level</b>
             </div>
             <div class="div23j">
               <b>:</b>
             </div>
-            <div class="div24j">{jobDetails[0].education} </div>
+            <div class="div24j">{jobDetails.education} </div>
             <div class="div25j">
               <b>Experience</b>
             </div>
             <div class="div26j">
               <b>:</b>
             </div>
-            <div class="div27j">{jobDetails[0].experience}</div>
+            <div class="div27j">{jobDetails.experience}</div>
           </div>
           <div class="div28j">
             <div>
@@ -117,7 +117,7 @@ export default function JobDetails(props) {
             </div>
             <div>
               <ul className="lists">
-                {jobDetails[0].specifications.split(",").map((value, index) => {
+                {jobDetails.specifications.split(",").map((value, index) => {
                   return <li key={index}>{value}</li>;
                 })}
               </ul>
@@ -129,7 +129,7 @@ export default function JobDetails(props) {
             </div>
             <div>
               <ul className="lists">
-                {jobDetails[0].description.split(",").map((value, index) => {
+                {jobDetails.description.split(",").map((value, index) => {
                   return <li key={index}>{value}</li>;
                 })}
               </ul>

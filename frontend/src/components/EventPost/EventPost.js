@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
-import './CreateEventForm.css'; // Ensure you have this CSS file
+import React, { useState } from "react";
+import "./CreateEventForm.css"; // Ensure you have this CSS file
+import axios from "axios";
 
 function CreateEventForm() {
   const [eventData, setEventData] = useState({
-    eventName: '',
-    eventOrganizer: '',
-    eventTag: '',
-    date: '',
-    startTime: '',
-    endTime: '',
-    state: '',
-    city: '',
-    venue: '',
-    description: ''
+    eventName: "",
+    eventOrganizer: "",
+    eventTag: "",
+    date: "",
+    startTime: "",
+    endTime: "",
+    state: "",
+    city: "",
+    venue: "",
+    description: "",
+    imageURL: "image",
   });
 
   const [errors, setErrors] = useState({});
@@ -22,7 +24,7 @@ function CreateEventForm() {
     setEventData({ ...eventData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let newErrors = {};
     let formIsValid = true;
@@ -31,31 +33,45 @@ function CreateEventForm() {
     Object.entries(eventData).forEach(([key, value]) => {
       if (!value.trim()) {
         formIsValid = false;
-        newErrors[key] = `${key.charAt(0).toUpperCase() + key.slice(1).split(/(?=[A-Z])/).join(' ')} is required.`;
+        newErrors[key] = `${
+          key.charAt(0).toUpperCase() +
+          key
+            .slice(1)
+            .split(/(?=[A-Z])/)
+            .join(" ")
+        } is required.`;
       }
     });
 
     setErrors(newErrors);
 
     if (formIsValid) {
-      console.log(eventData);
-      // Form is valid, submit the data
+      console.log("asdasdasd", eventData);
+
+      await axios.post("http://127.0.0.1:3000/api/events", eventData).then(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     }
   };
 
   const handleCancel = () => {
     // Reset the form fields and errors
     setEventData({
-      eventName: '',
-      eventOrganizer: '',
-      eventTag: '',
-      date: '',
-      startTime: '',
-      endTime: '',
-      state: '',
-      city: '',
-      venue: '',
-      description: ''
+      eventName: "",
+      eventOrganizer: "",
+      eventTag: "",
+      date: "",
+      startTime: "",
+      endTime: "",
+      state: "",
+      city: "",
+      venue: "",
+      description: "",
     });
     setErrors({});
   };
@@ -66,7 +82,7 @@ function CreateEventForm() {
     <div className="create-event-form">
       <h2>Create Event</h2>
       <form onSubmit={handleSubmit}>
-      <div className="error-message">{errors["eventName"]}</div>
+        <div className="error-message">{errors["eventName"]}</div>
         <input
           type="text"
           name="eventName"
@@ -146,7 +162,9 @@ function CreateEventForm() {
         ></textarea>
         <div className="form-actions">
           <button type="submit">Create</button>
-          <button type="button" onClick={handleCancel}>Cancel</button>
+          <button type="button" onClick={handleCancel}>
+            Cancel
+          </button>
         </div>
         {/* Display validation errors */}
         {/* {Object.keys(errors).map((key) => (

@@ -23,15 +23,11 @@ export default function SignIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    await axios.post(
-      "http://localhost:3000/auth/login",
-      {
-        email,
-        password,
-      },
-      { withCredentials: true }
-    );
+    await axios.post("http://127.0.0.1:3000/auth/login", {
+      email,
+      password,
+    });
+    // console.log(data1);
   };
 
   return (

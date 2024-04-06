@@ -18,7 +18,7 @@ const style = {
   p: 4,
 };
 
-export default function JobDetails(props) {
+export default function AccommodationDetails(props) {
   const [accommodationDetails, setAccommodationDetails] = React.useState(null);
 
   const [open, setOpen] = React.useState(false);
@@ -28,7 +28,7 @@ export default function JobDetails(props) {
   React.useEffect(() => {
     axios
 
-      .get(`http://localhost:8000/accommodations?accommodationID=${props.id}`)
+      .get(`http://127.0.0.1:3000/api/accommodations/${props.id}`)
       .then((response) => {
         setAccommodationDetails(response.data);
         console.log(response);
@@ -48,24 +48,24 @@ export default function JobDetails(props) {
           <div className="parentA">
             <div className="div1A">
               <div className="titleInfo">
-                <h3>{accommodationDetails[0].roomType}</h3>
+                <h3>Room: {accommodationDetails.roomType}</h3>
               </div>
               <div className="titleInfo">
-                <h3>{"$" + accommodationDetails[0].rent}</h3>
+                <h3>{"$" + accommodationDetails.rent}</h3>
               </div>
               <div className="titleInfo">
-                <h3>Move In: {accommodationDetails[0].moveIn}</h3>
+                <h3>Move In: {accommodationDetails.moveIn.split("T")[0]}</h3>
               </div>
             </div>
             <div className="div2A">
               <div className="placeInfo">
                 <h3>ABS's place</h3>
                 <h3 className="titleInfo"> Space</h3>
-                <div className="titleDesc">{accommodationDetails[0].space}</div>
+                <div className="titleDesc">{accommodationDetails.space}</div>
                 <h3 className="titleInfo"> Amenities</h3>
                 <div className="titleDesc">
                   <ul className="lists">
-                    {accommodationDetails[0].amenities
+                    {accommodationDetails.amenities
                       .split(",")
                       .map((value, index) => {
                         return <li key={index}>{value}</li>;
@@ -76,7 +76,7 @@ export default function JobDetails(props) {
                 <h3 className="titleInfo"> Roommate Rules</h3>
                 <div className="titleDesc">
                   <ul className="lists">
-                    {accommodationDetails[0].roommateRules
+                    {accommodationDetails.rules
                       .split(",")
                       .map((value, index) => {
                         return <li key={index}>{value}</li>;
@@ -89,21 +89,25 @@ export default function JobDetails(props) {
                   Location
                 </h3>
                 <div className="loc">
+                  <b>Location: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</b>
+                  {accommodationDetails.location}
+                </div>
+                {/* <div className="loc">
                   <b>State: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</b>
-                  {accommodationDetails[0].state}
+                  {accommodationDetails.state}
                 </div>
                 <div className="loc">
                   <b>City: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</b>
-                  {accommodationDetails[0].city}
+                  {accommodationDetails.city}
                 </div>
                 <div className="loc">
                   <b>Street: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</b>
-                  {accommodationDetails[0].street}
+                  {accommodationDetails.street}
                 </div>
                 <div className="loc" style={{ marginBottom: "0.5rem" }}>
                   <b>House No.: &nbsp;</b>
-                  {accommodationDetails[0].houseNumber}
-                </div>
+                  {accommodationDetails.houseNumber}
+                </div> */}
               </div>
             </div>
 

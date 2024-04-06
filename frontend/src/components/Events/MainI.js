@@ -8,7 +8,7 @@ import EventDetails from "./eventDetailsModal";
 
 import { Link } from "react-router-dom";
 
-const baseURL = "http://localhost:8000/events";
+const baseURL = "http://127.0.0.1:3000/api/events/";
 
 const style = {
   position: "absolute",
@@ -45,7 +45,8 @@ export default function Ncard() {
   if (!eventpost) return null;
 
   const events = eventpost.map((data) => {
-    console.log(data.eventID);
+    console.log("----------------------------");
+    console.log(data.uuid);
     return (
       <div className="card" key={data.eventID}>
         <img src={data.banner} alt="myPic" className="card_img" />
@@ -53,12 +54,12 @@ export default function Ncard() {
         <div className="card_info">
           <h2 className="event_name">{data.eventName} </h2>
 
-          <h3 className="event_date">{data.date} </h3>
+          <h3 className="event_date">{data.date.split("T")[0]} </h3>
           <h3 className="event_location">{data.venue} </h3>
 
           <div>
             {/* <button onClick={handleOpen}> View Details</button> */}
-            <EventDetails id={data.eventID} />
+            <EventDetails id={data.uuid} />
           </div>
           {/* </a> */}
         </div>
