@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./JobPostings.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ImageUploader from "../../utils/ImageUploader";
 
 const CreateJobPost = () => {
   const [jobData, setJobData] = useState({
@@ -39,7 +40,7 @@ const CreateJobPost = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Assume all fields are required for simplicity, check for empty fields
+
     let newErrors = {};
     let isValid = true;
     Object.keys(jobData).forEach((key) => {
@@ -65,6 +66,8 @@ const CreateJobPost = () => {
         }
       );
     }
+
+    // Assume all fields are required for simplicity, check for empty fields
   };
 
   const handleCancel = () => {
@@ -96,6 +99,7 @@ const CreateJobPost = () => {
 
           {/* Input fields for job post */}
           {/* Repeat this pattern for each field */}
+          <ImageUploader setParentState={setJobData}></ImageUploader>
           <input
             type="text"
             name="institutionName"

@@ -1,0 +1,29 @@
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.dropzone {
+  border: 2px dashed #007bff;
+  border-radius: 5px;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.preview img {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.remove-button {
+  display: inline-block;
+  margin-top: 10px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0 5px;
+}

@@ -50,7 +50,7 @@ export default function JobCard() {
     return (
       <div key={data.uuid}>
         <div className="jobCard">
-          <img src={data.jobBanner} alt="myPic" className="jobCard_img" />
+          <img src={data.imageURL} alt="myPic" className="jobCard_img" />
 
           <div className="jobCard_info">
             <h2 className="job_title">{data.post}</h2>
