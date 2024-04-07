@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import "./JobModal.css";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -24,6 +25,25 @@ export default function JobDetails(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const navigate = useNavigate();
+  const refreshPage = () => {
+    axios.get(`http://127.0.0.1:3000/api/jobs`).then((response) => {
+      props.setjobPost(response.data);
+    });
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://127.0.0.1:3000/api/jobs/${props.id}`);
+      handleClose();
+      await refreshPage();
+      // navigate("/jobs");
+
+      //history.push("/jobs");
+    } catch (error) {
+      console.error("Error deleting job:", error);
+    }
+  };
 
   // http://localhost:8000/jobs?id=1
 
@@ -47,6 +67,20 @@ export default function JobDetails(props) {
       <Modal open={open} onClose={handleClose} id={props.id}>
         <Box sx={style}>
           <div class="parents">
+            <div class="divbtn">
+              {/* <b>button</b> */}
+              <Link
+                to={"/updateJob/" + props.id}
+                style={{ textDecoration: "none" }}
+              >
+                <button class="editBtn">Edit</button>
+              </Link>
+              <Link>
+                <button onClick={handleDelete} class="delBtn">
+                  Delete
+                </button>
+              </Link>
+            </div>
             <div class="div1j">
               <b>College/Company</b>
             </div>
@@ -95,7 +129,7 @@ export default function JobDetails(props) {
             <div class="div20j">
               <b>:</b>
             </div>
-            <div class="div21j">{jobDetails.deadline.split("T")[0]} </div>
+            <div class="div21j">{jobDetails.deadline?.split("T")[0]} </div>
             <div class="div22j">
               <b>Education Level</b>
             </div>
@@ -117,7 +151,7 @@ export default function JobDetails(props) {
             </div>
             <div>
               <ul className="lists">
-                {jobDetails.specifications.split(",").map((value, index) => {
+                {jobDetails.specifications?.split(",").map((value, index) => {
                   return <li key={index}>{value}</li>;
                 })}
               </ul>
@@ -129,7 +163,7 @@ export default function JobDetails(props) {
             </div>
             <div>
               <ul className="lists">
-                {jobDetails.description.split(",").map((value, index) => {
+                {jobDetails.description?.split(",").map((value, index) => {
                   return <li key={index}>{value}</li>;
                 })}
               </ul>

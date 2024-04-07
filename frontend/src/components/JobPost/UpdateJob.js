@@ -1,29 +1,29 @@
 import React, { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import "./JobPostings.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-const CreateJobPost = () => {
-  const [jobData, setJobData] = useState({
-    institutionName: "",
-    post: "",
-    level: "",
-    vacancy: "",
-    type: "",
-    salary: "",
-    deadline: "",
-    state: "",
-    city: "",
-    venue: "",
-    education: "",
-    experience: "",
-    specifications: "",
-    description: "",
-    imageURL: "image",
-  });
+const UpdateJob = (props) => {
+  const [jobData, setJobData] = useState([]);
+  console.log("==============", props);
+  const { id } = useParams();
+  console.log("IIIIDDD", id);
+
+  React.useEffect(() => {
+    axios.get(`http://127.0.0.1:3000/api/jobs/${id}`).then((response) => {
+      setJobData(response.data);
+      setJobData((prevData) => {
+        return { ...prevData, deadline: prevData.deadline.split("T")[0] };
+      });
+      console.log("tttttttttttttttt", response);
+    });
+  }, []);
+
+  const navigate = useNavigate();
+
+  console.log("AAAAAAAAAAAAAA", jobData);
 
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -43,7 +43,7 @@ const CreateJobPost = () => {
     let newErrors = {};
     let isValid = true;
     Object.keys(jobData).forEach((key) => {
-      if (!jobData[key].trim()) {
+      if (!jobData[key].trim) {
         isValid = false;
         newErrors[key] = `${key[0].toUpperCase() + key.slice(1)} is required.`;
       }
@@ -55,7 +55,7 @@ const CreateJobPost = () => {
       console.log("Submitted Data:", jobData);
       // Handle the job post creation here, such as sending data to an API
 
-      await axios.post("http://127.0.0.1:3000/api/jobs", jobData).then(
+      await axios.put(`http://127.0.0.1:3000/api/jobs/${id}`, jobData).then(
         (response) => {
           console.log(response);
           navigate("/jobs");
@@ -251,4 +251,4 @@ const CreateJobPost = () => {
   );
 };
 
-export default CreateJobPost;
+export default UpdateJob;

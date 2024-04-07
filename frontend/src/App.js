@@ -14,6 +14,7 @@ import EventPostForm from "./components/EventPost/EventPost";
 import UserProfile from "./components/UserProfile/UserProfile";
 import LoginForm from "./components/Login/login";
 import SignupForm from "./components/Signup/Signup";
+import UpdateJob from "./components/JobPost/UpdateJob";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         />
         <Route path="/events/CreateEventForm" element={<EventPostForm />} />
         <Route path="/userprofile" element={<UserProfile />} />
+        <Route path="/updateJob/:id" element={<UpdateJob />} />
 
         <Route path="*" element={<NotFoundView />} />
       </Routes>

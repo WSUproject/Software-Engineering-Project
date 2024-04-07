@@ -6,12 +6,16 @@
 .parents {
     display: grid;
     /* grid-template-columns: repeat(3, 10rem); */
-    grid-template-columns: 10rem 10rem auto;
-    grid-template-rows: repeat(10, 4fr);
+    grid-template-columns: 10rem 10rem 10rem auto;
+    grid-template-rows: repeat(10, 0.7fr);
     grid-column-gap: 0px;
     /* grid-row-gap: 0.1rem; */
     }
-    
+    .divbtn { grid-area: 1 / 4 / 2 / 5;
+    display: flex;
+    flex-direction:row-reverse;
+    align-content: flex-end; 
+    margin: 0%;}
     .div1j { grid-area: 1 / 1 / 2 / 2; }
     .div2j { grid-area: 1 / 2 / 2 / 3; }
     .div3j { grid-area: 1 / 3 / 2 / 4; }
@@ -60,4 +64,17 @@
         margin-top: 0.5rem;
         margin-bottom: 1rem;
         margin-right: 3rem;
+    }
+
+    .editBtn{
+        /* background-color: #04AA6D;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px; */
+        margin: 0px;
+        cursor: pointer;
     }

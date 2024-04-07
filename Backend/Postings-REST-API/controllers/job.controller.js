@@ -34,7 +34,7 @@ exports.getJobById = async (req, res, next) => {
 exports.deleteJobById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    service.deleteJobById(id);
+    await service.deleteJobById(id);
     res.send({ message: "Job deleted successfully" });
   } catch (error) {
     next(error);

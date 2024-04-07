@@ -61,7 +61,7 @@ export default function JobCard() {
 
             <div>
               {/* <button onClick={handleOpen}> View Details</button> */}
-              <JobDetails id={data.uuid} />
+              <JobDetails id={data.uuid} setjobPost={setjobPost} />
             </div>
           </div>
         </div>
