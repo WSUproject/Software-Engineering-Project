@@ -8,7 +8,7 @@ const RequireAuth = () => {
       <Outlet />
     </>
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/sign-in" />
   );
 };
 

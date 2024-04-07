@@ -22,7 +22,7 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
 
-  const { setAuth } = useAuth();
+  const { setAuth, auth } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,10 +30,14 @@ export default function SignIn() {
       email,
       password,
     });
+    console.log(data);
     const authData = {
-      token: data.token,
-      user: data.user,
+      token: data.data.token,
+      user: data.data.user,
     };
+    setAuth(authData);
+    console.log("the context auth ddata is, ");
+    console.log(auth);
     // console.log(data1);
   };
 
