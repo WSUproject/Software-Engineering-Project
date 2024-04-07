@@ -11,7 +11,7 @@
 
 .create-event-form form {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* two columns */
+  grid-template-columns: 1fr; /* two columns */
   grid-gap: 10px;
 }
 

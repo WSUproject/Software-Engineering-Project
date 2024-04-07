@@ -49,7 +49,7 @@ export default function Ncard() {
     console.log(data.uuid);
     return (
       <div className="card" key={data.eventID}>
-        <img src={data.banner} alt="myPic" className="card_img" />
+        <img src={data.imageURL} alt="myPic" className="card_img" />
 
         <div className="card_info">
           <h2 className="event_name">{data.eventName} </h2>

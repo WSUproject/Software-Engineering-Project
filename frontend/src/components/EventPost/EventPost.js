@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./CreateEventForm.css"; // Ensure you have this CSS file
 import axios from "axios";
+import ImageUploader from "../../utils/ImageUploader";
 
 function CreateEventForm() {
   const [eventData, setEventData] = useState({
@@ -82,6 +83,7 @@ function CreateEventForm() {
     <div className="create-event-form">
       <h2>Create Event</h2>
       <form onSubmit={handleSubmit}>
+        <ImageUploader setParentState={setEventData}></ImageUploader>
         <div className="error-message">{errors["eventName"]}</div>
         <input
           type="text"
