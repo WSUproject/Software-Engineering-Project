@@ -58,10 +58,11 @@ exports.login = async (req, res, next) => {
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.json({
-      message: "Login successful!",
+      message: "Login successfully!",
       uuid: user.uuid,
       token,
       refreshToken,
+      user,
     });
   } catch (err) {
     throw err;

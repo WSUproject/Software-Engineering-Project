@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
 const theme = createTheme();
@@ -21,12 +22,18 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
 
+  const { setAuth } = useAuth();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://127.0.0.1:3000/auth/login", {
+    const data = await axios.post("http://127.0.0.1:3000/auth/login", {
       email,
       password,
     });
+    const authData = {
+      token: data.token,
+      user: data.user,
+    };
     // console.log(data1);
   };
 
