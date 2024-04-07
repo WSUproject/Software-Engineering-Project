@@ -15,28 +15,32 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import LoginForm from "./components/Login/login";
 import SignupForm from "./components/Signup/Signup";
 import UpdateJob from "./components/JobPost/UpdateJob";
+import RequireRole from "../src/utils/RequireRole";
+import RequireAuth from "../src/utils/RequireAuth";
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<LoginForm />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contactus" element={<Contact />} />
-        <Route path="/jobs" element={<Job />} />
-        <Route path="/accommodations" element={<Accommodation />} />
-        <Route path="/events" element={<MainI />} />
-        <Route path="/jobs/CreateJobForm" element={<JobPostForm />} />
-        <Route
-          path="/accommodations/CreateAccommodationForm"
-          element={<AccomodationPostForm />}
-        />
-        <Route path="/events/CreateEventForm" element={<EventPostForm />} />
-        <Route path="/userprofile" element={<UserProfile />} />
-        <Route path="/updateJob/:id" element={<UpdateJob />} />
+        <Route element={<RequireAuth />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contactus" element={<Contact />} />
+          <Route path="/jobs" element={<Job />} />
+          <Route path="/accommodations" element={<Accommodation />} />
+          <Route path="/events" element={<MainI />} />
+          <Route path="/jobs/CreateJobForm" element={<JobPostForm />} />
+          <Route
+            path="/accommodations/CreateAccommodationForm"
+            element={<AccomodationPostForm />}
+          />
+          <Route path="/events/CreateEventForm" element={<EventPostForm />} />
+          <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/updateJob/:id" element={<UpdateJob />} />
+        </Route>
 
         <Route path="*" element={<NotFoundView />} />
       </Routes>
