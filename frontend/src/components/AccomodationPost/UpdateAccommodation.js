@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import "./AccomodationForm.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import ImageUploader from "../../utils/ImageUploader";
+import { useParams, useNavigate } from "react-router-dom";
 
-const AccommodationForm = () => {
-  const [formData, setFormData] = useState({
-    roomType: "",
-    rent: "",
-    moveIn: "",
-    space: "",
-    amenities: "",
-    rules: "",
-    location: "",
-    imageURL: "image",
-  });
+const UpdateAccommodation = (props) => {
+  const [formData, setFormData] = useState([]);
+
+  const { id } = useParams();
+
+  React.useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:3000/api/accommodations/${id}`)
+      .then((response) => {
+        setFormData(response.data);
+        //   setFormData((prevData) => {
+        //     return { ...prevData, moveIn: prevData.moveIn.split("T")[0] };
+        //   });
+        console.log("tttttttttttttttt", response);
+      });
+  }, []);
 
   const navigate = useNavigate();
 
@@ -29,15 +33,17 @@ const AccommodationForm = () => {
     console.log(formData);
     // Here you would usually send the data to the server
 
-    await axios.post("http://127.0.0.1:3000/api/accommodations", formData).then(
-      (response) => {
-        console.log(response);
-        navigate("/accommodations");
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    await axios
+      .put(`http://127.0.0.1:3000/api/accommodations/${id}`, formData)
+      .then(
+        (response) => {
+          console.log(response);
+          navigate("/accommodations");
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   };
 
   return (
@@ -45,8 +51,6 @@ const AccommodationForm = () => {
       <h2>List a Room</h2>
       <form onSubmit={handleSubmit}>
         {/* Room Type */}
-        <ImageUploader setParentState={setFormData}></ImageUploader>
-
         <label htmlFor="roomType">Room Type</label>
         <select
           name="roomType"
@@ -134,4 +138,4 @@ const AccommodationForm = () => {
   );
 };
 
-export default AccommodationForm;
+export default UpdateAccommodation;

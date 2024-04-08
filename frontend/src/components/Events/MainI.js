@@ -59,7 +59,7 @@ export default function Ncard() {
 
           <div>
             {/* <button onClick={handleOpen}> View Details</button> */}
-            <EventDetails id={data.uuid} />
+            <EventDetails id={data.uuid} seteventPost={seteventPost} />
           </div>
           {/* </a> */}
         </div>

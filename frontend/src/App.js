@@ -17,6 +17,8 @@ import SignupForm from "./components/Signup/Signup";
 import UpdateJob from "./components/JobPost/UpdateJob";
 import RequireRole from "../src/utils/RequireRole";
 import RequireAuth from "../src/utils/RequireAuth";
+import UpdateEvent from "./components/EventPost/UpdateEvent";
+import UpdateAccommodation from "./components/AccomodationPost/UpdateAccommodation";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/sign-in" element={<LoginForm />} />
+        <Route path="/sign-up" element={<SignupForm />} />
+
         <Route element={<RequireAuth />}>
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<Home />} />
@@ -40,6 +44,11 @@ function App() {
           <Route path="/events/CreateEventForm" element={<EventPostForm />} />
           <Route path="/userprofile" element={<UserProfile />} />
           <Route path="/updateJob/:id" element={<UpdateJob />} />
+          <Route path="/updateEvent/:id" element={<UpdateEvent />} />
+          <Route
+            path="/updateAccommodation/:id"
+            element={<UpdateAccommodation />}
+          />
         </Route>
 
         <Route path="*" element={<NotFoundView />} />

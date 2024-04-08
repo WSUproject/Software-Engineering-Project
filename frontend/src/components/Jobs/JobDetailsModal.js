@@ -76,7 +76,7 @@ export default function JobDetails(props) {
                 <button class="editBtn">Edit</button>
               </Link>
               <Link>
-                <button onClick={handleDelete} class="delBtn">
+                <button class="delBtn" onClick={handleDelete}>
                   Delete
                 </button>
               </Link>

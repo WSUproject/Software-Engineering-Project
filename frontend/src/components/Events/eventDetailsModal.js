@@ -8,6 +8,7 @@ import { BsCalendarDate } from "react-icons/bs";
 import { BsCoin } from "react-icons/bs";
 import { BsClock } from "react-icons/bs";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -27,6 +28,24 @@ export default function EventDetails(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const refreshPage = () => {
+    axios.get(`http://127.0.0.1:3000/api/events`).then((response) => {
+      props.seteventPost(response.data);
+    });
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://127.0.0.1:3000/api/events/${props.id}`);
+      handleClose();
+      await refreshPage();
+      // navigate("/jobs");
+
+      //history.push("/jobs");
+    } catch (error) {
+      console.error("Error deleting job:", error);
+    }
+  };
 
   React.useEffect(() => {
     axios
@@ -62,6 +81,22 @@ export default function EventDetails(props) {
               >
                 {eventDetails.eventName}
               </h2>
+
+              <div class="divbtn1">
+                {/* <b>button</b> */}
+                <Link
+                  to={"/updateEvent/" + props.id}
+                  // to={"/updateEvent"}
+                  style={{ textDecoration: "none" }}
+                >
+                  <button class="editBtn">Edit</button>
+                </Link>
+                <Link>
+                  <button class="delBtn" onClick={handleDelete}>
+                    Delete
+                  </button>
+                </Link>
+              </div>
             </div>
             <div className="div2">
               <div className="date">
