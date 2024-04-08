@@ -20,6 +20,7 @@ import RequireAuth from "../src/utils/RequireAuth";
 import UpdateEvent from "./components/EventPost/UpdateEvent";
 import UpdateAccommodation from "./components/AccomodationPost/UpdateAccommodation";
 import ApplyJobs from "./components/Jobs/ApplyJobs";
+import ViewApplication from "./components/Jobs/ViewApplication";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           />
         </Route>
         <Route path="/apply/:id" element={<ApplyJobs />} />
+        <Route path="/viewApplication/:id" element={<ViewApplication />} />
 
         <Route path="*" element={<NotFoundView />} />
       </Routes>

@@ -82,6 +82,15 @@ export default function JobDetails(props) {
                 </button>
               </Link>
             </div>
+            <div class="divbtn00">
+              {/* <b>button</b> */}
+              <Link
+                to={"/viewApplication/" + props.id}
+                style={{ textDecoration: "none" }}
+              >
+                <button class="editBtn">View Application</button>
+              </Link>
+            </div>
             <div class="div1j">
               <b>College/Company</b>
             </div>
