@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import "./Jobs.css";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
@@ -36,6 +36,7 @@ export default function JobCard() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const axios = useAxiosPrivate();
 
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {

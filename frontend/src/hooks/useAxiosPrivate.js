@@ -1,4 +1,5 @@
-import { axiosPrivate } from "../api/axios";
+// import { axios } from "../components/api/axios";
+import axios from "axios";
 import { useEffect } from "react";
 import useAuth from "./useAuth";
 
@@ -6,10 +7,10 @@ const useAxiosPrivate = () => {
   const { auth } = useAuth();
 
   useEffect(() => {
-    const requestIntercept = axiosPrivate.interceptors.request.use(
+    const requestIntercept = axios.interceptors.request.use(
       (config) => {
         if (!config.headers["Authorization"]) {
-          config.headers["Authorization"] = `Bearer ${auth?.accessToken}`;
+          config.headers["Authorization"] = `Bearer ${auth?.token}`;
         }
         return config;
       },
@@ -18,11 +19,11 @@ const useAxiosPrivate = () => {
 
     // Return a cleanup function to remove the interceptor when the component unmounts
     return () => {
-      axiosPrivate.interceptors.request.eject(requestIntercept);
+      axios.interceptors.request.eject(requestIntercept);
     };
   }, [auth]); // Re-run this effect if the `auth` object changes
 
-  return axiosPrivate;
+  return axios;
 };
 
 export default useAxiosPrivate;

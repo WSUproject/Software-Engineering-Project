@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import "./AccommodationModal.css";
@@ -30,6 +30,7 @@ export default function AccommodationDetails(props) {
       props.setAccommodationPost(response.data);
     });
   };
+  const axios = useAxiosPrivate();
 
   const handleDelete = async () => {
     try {

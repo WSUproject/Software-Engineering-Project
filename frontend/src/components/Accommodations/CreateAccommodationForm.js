@@ -14,7 +14,7 @@ import {
   RowCol6,
 } from "../ContactUs/ContactElements";
 import { FormReuse, Form } from "../FormReuses/FormReuse";
-import axios from "axios";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
 const initialFieldValues = {
   id: 0,
@@ -27,6 +27,7 @@ const initialFieldValues = {
 
 export default function CreateEvent() {
   const [user, setUser] = React.useState("");
+  const axios = useAxiosPrivate();
 
   React.useEffect(() => {
     axios

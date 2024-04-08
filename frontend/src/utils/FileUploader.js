@@ -3,9 +3,11 @@ import React from "react";
 import { useDropzone } from "react-dropzone";
 import "./ImageUploader";
 import { uploadToFirebase } from "./UploadFirebase";
+import "./FileUploader.css";
 
-const FileUploader = ({ setParentState }) => {
+const FileUploader = ({ setParentState, applyJob }) => {
   const [pdfFile, setPdfFile] = useState(null);
+  const [uploadedToCloud, setUploadedToCloud] = useState(false);
 
   const handleSubmit = async () => {
     if (pdfFile) {
@@ -15,6 +17,7 @@ const FileUploader = ({ setParentState }) => {
         ...prevState,
         fileURL: downloadURL,
       }));
+      setUploadedToCloud(true);
     }
   };
 
@@ -36,6 +39,7 @@ const FileUploader = ({ setParentState }) => {
       ...prevState,
       fileURL: "",
     }));
+    setUploadedToCloud(false);
   };
 
   return (
@@ -47,12 +51,17 @@ const FileUploader = ({ setParentState }) => {
       {pdfFile && (
         <div className="preview">
           <p>{pdfFile.name}</p>
-          <button onClick={removeFile} className="remove-button">
+          <button onClick={removeFile} className="Xbtn">
             Remove
           </button>
         </div>
       )}
-      <button onClick={handleSubmit}>Upload</button>
+      {!uploadedToCloud ? (
+        <button onClick={handleSubmit}>Upload</button>
+      ) : (
+        <></>
+      )}
+      {uploadedToCloud ? <button onClick={applyJob}>Apply</button> : <></>}
     </div>
   );
 };

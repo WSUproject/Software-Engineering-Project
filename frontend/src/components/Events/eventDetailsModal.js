@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -24,6 +24,7 @@ const style = {
 
 export default function EventDetails(props) {
   const [eventDetails, seteventDetails] = React.useState(null);
+  const axios = useAxiosPrivate();
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);

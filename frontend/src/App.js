@@ -19,6 +19,7 @@ import RequireRole from "../src/utils/RequireRole";
 import RequireAuth from "../src/utils/RequireAuth";
 import UpdateEvent from "./components/EventPost/UpdateEvent";
 import UpdateAccommodation from "./components/AccomodationPost/UpdateAccommodation";
+import ApplyJobs from "./components/Jobs/ApplyJobs";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
             element={<UpdateAccommodation />}
           />
         </Route>
+        <Route path="/apply/:id" element={<ApplyJobs />} />
 
         <Route path="*" element={<NotFoundView />} />
       </Routes>

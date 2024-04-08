@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./AccomodationForm.css";
-import axios from "axios";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useParams, useNavigate } from "react-router-dom";
 
 const UpdateAccommodation = (props) => {
   const [formData, setFormData] = useState([]);
 
   const { id } = useParams();
+  const axios = useAxiosPrivate();
 
   React.useEffect(() => {
     axios

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AccomodationForm.css";
-import axios from "axios";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useNavigate } from "react-router-dom";
 import ImageUploader from "../../utils/ImageUploader";
 
@@ -15,6 +15,7 @@ const AccommodationForm = () => {
     location: "",
     imageURL: "image",
   });
+  const axios = useAxiosPrivate();
 
   const navigate = useNavigate();
 
