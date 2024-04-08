@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import "./CreateEventForm.css"; // Ensure you have this CSS file
 import axios from "axios";
-import ImageUploader from "../../utils/ImageUploader";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-function CreateEventForm() {
-  const [eventData, setEventData] = useState({
-    eventName: "",
-    eventOrganizer: "",
-    eventTag: "",
-    date: "",
-    startTime: "",
-    endTime: "",
-    state: "",
-    city: "",
-    venue: "",
-    description: "",
-    imageURL: "image",
-  });
+function UpdateEvent(props) {
+  const [eventData, setEventData] = useState([]);
+
+  const { id } = useParams();
+
+  React.useEffect(() => {
+    axios.get(`http://127.0.0.1:3000/api/events/${id}`).then((response) => {
+      setEventData(response.data);
+      setEventData((prevData) => {
+        return { ...prevData, date: prevData.date.split("T")[0] };
+      });
+      console.log("tttttttttttttttt", response);
+    });
+  }, []);
+
   const navigate = useNavigate();
 
   const [errors, setErrors] = useState({});
@@ -51,7 +51,7 @@ function CreateEventForm() {
     if (formIsValid) {
       console.log("asdasdasd", eventData);
 
-      await axios.post("http://127.0.0.1:3000/api/events", eventData).then(
+      await axios.put(`http://127.0.0.1:3000/api/events/${id}`, eventData).then(
         (response) => {
           console.log(response);
           navigate("/events");
@@ -86,7 +86,6 @@ function CreateEventForm() {
     <div className="create-event-form">
       <h2>Create Event</h2>
       <form onSubmit={handleSubmit}>
-        <ImageUploader setParentState={setEventData}></ImageUploader>
         <div className="error-message">{errors["eventName"]}</div>
         <input
           type="text"
@@ -180,4 +179,4 @@ function CreateEventForm() {
   );
 }
 
-export default CreateEventForm;
+export default UpdateEvent;

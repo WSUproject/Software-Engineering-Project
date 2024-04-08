@@ -23,6 +23,8 @@
 
 .container {
   position: relative;
+  display: flex;
+  align-items: left;
 }
 
 .text-overlay {

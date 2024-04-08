@@ -8,8 +8,12 @@ import {
   NavBtn,
   NavBtnLink,
 } from "./navBarElements";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = (props) => {
+  const { auth } = useAuth();
+  console.log("BBBBBBBBBBBBBBB", auth);
+
   return (
     <>
       <Nav1>
@@ -34,8 +38,19 @@ const Navbar = (props) => {
           {/* <NavLink to="/sign-up" activeStyle>
             Sign Up
           </NavLink> */}
+          {auth.token ? (
+            // Display user-specific content if the user is authenticated
+            <>
+              <NavBtnLink to="/userprofile">
+                HI, {auth.user.userName}
+              </NavBtnLink>
+            </>
+          ) : (
+            // Display login link if the user is not authenticated
+            <NavBtnLink to="/sign-in">Sign In</NavBtnLink>
+          )}
           Second Nav
-          <NavBtnLink to="/sign-in">Sign In</NavBtnLink>
+          {/* <NavBtnLink to="/sign-in">Sign In</NavBtnLink> */}
         </NavMenu>
         {/* <NavBtn>
           <NavBtnLink to='/signin'>Sign In</NavBtnLink>

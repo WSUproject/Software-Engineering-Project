@@ -41,7 +41,7 @@ export default function Ncard() {
     console.log(data.uuid);
     return (
       <div className="card" key={data.accommodationID}>
-        <img src={data.accommodationBanner} alt="myPic" className="card_img" />
+        <img src={data.imageURL} alt="myPic" className="card_img" />
 
         <div className="card_info">
           <h2 className="event_name">{data.roomType} </h2>
@@ -49,7 +49,10 @@ export default function Ncard() {
           <h3 className="event_date">{"$" + data.rent} </h3>
           <h3 className="event_location">{data.location} </h3>
           <div>
-            <AccommodationDetails id={data.uuid} />
+            <AccommodationDetails
+              id={data.uuid}
+              setAccommodationPost={setAccommodationPost}
+            />
           </div>
         </div>
       </div>

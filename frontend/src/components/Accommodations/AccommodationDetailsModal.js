@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import "./AccommodationModal.css";
 import { FiMail } from "react-icons/fi";
 import { FaPhone } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -24,6 +25,26 @@ export default function AccommodationDetails(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const refreshPage = () => {
+    axios.get(`http://127.0.0.1:3000/api/accommodations`).then((response) => {
+      props.setAccommodationPost(response.data);
+    });
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(
+        `http://127.0.0.1:3000/api/accommodations/${props.id}`
+      );
+      handleClose();
+      await refreshPage();
+      // navigate("/jobs");
+
+      //history.push("/jobs");
+    } catch (error) {
+      console.error("Error deleting Accommodation:", error);
+    }
+  };
 
   React.useEffect(() => {
     axios
@@ -125,6 +146,20 @@ export default function AccommodationDetails(props) {
                     <div>john@gmail.com</div>
                   </div>
                 </div>
+              </div>
+              <div class="divbtn2">
+                {/* <b>button</b> */}
+                <Link
+                  to={"/updateAccommodation/" + props.id}
+                  style={{ textDecoration: "none" }}
+                >
+                  <button class="editBtn">Edit</button>
+                </Link>
+                <Link>
+                  <button class="delBtn" onClick={handleDelete}>
+                    Delete
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

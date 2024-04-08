@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
@@ -23,6 +24,7 @@ export default function SignIn() {
   const [password, setpassword] = useState("");
 
   const { setAuth, auth } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +41,7 @@ export default function SignIn() {
     console.log("the context auth ddata is, ");
     console.log(auth);
     // console.log(data1);
+    navigate("/");
   };
 
   return (
