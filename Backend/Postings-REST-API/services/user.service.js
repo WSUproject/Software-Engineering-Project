@@ -46,7 +46,7 @@ exports.login = async (req, res, next) => {
       throw error;
     }
     let token = jwt.sign({ uuid: user.uuid }, "thesecrettoken", {
-      expiresIn: "30min",
+      expiresIn: "1d",
     });
     let refreshToken = jwt.sign({ uuid: user.uuid }, "thesecrettoken", {
       expiresIn: "1d",
