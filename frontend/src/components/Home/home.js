@@ -6,7 +6,7 @@ const Home = () => {
     <>
       <div className="home">
         <div class="container">
-          <img src="/Images/Logo/logo_NoBG.png" alt="logo" />
+          <img src="/Images/Logo/logo_NoBG.png" alt="logo" class="logo1" />
           <div class="text-overlay">
             <h2>
               "Discover Events, Jobs, and Accommodations – Everything You Need,

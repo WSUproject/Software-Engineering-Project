@@ -6,44 +6,67 @@ import { useParams } from "react-router-dom";
 const ViewApplication = () => {
   const axios = useAxiosPrivate();
   const [applicationData, setApplicationData] = useState([]);
-  const [one, setOne] = useState([]);
+  const [pdfDisplay, setPdfDisplay] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
-    // Assuming fetchData is an async function that fetches data
     const loadData = async () => {
       const response = await axios.get(
         `http://127.0.0.1:3000/api/jobApplications/job/${id}`
       );
-      setOne(response.data); // Assuming setState is your state setter function
-      console.log("test");
+      setApplicationData(response.data);
+      setPdfDisplay(new Array(response.data.length).fill(0));
+      console.log(response.data);
     };
 
     loadData();
-    console.log(one);
-  }, []); // Empty dependency array to run once on mount
+  }, []);
+
+  const togglePDFDisplay = (index) => {
+    // Create a new array with all current values
+    const newPdfDisplay = [...pdfDisplay];
+    // Toggle the value at the specified index
+    newPdfDisplay[index] = !newPdfDisplay[index];
+    // Update the state with the new array
+    setPdfDisplay(newPdfDisplay);
+  };
 
   return (
     <div id="GG">
       <h2>Application List</h2>
       <table id="applicants">
-        <tr>
-          <th>Applicants</th>
-          <th>Document</th>
-          <th>Date Applied</th>
-        </tr>
-        {/* {applicationData.map((app, index) => (
+        <thead>
+          <tr>
+            <th>Document</th>
+            <th>Date Applied</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {applicationData.map((app, index) => (
             <tr key={index}>
-              <td>{app.applicantName}</td>
-              <td>{app.document}</td>
-              <td>{app.dateApplied}</td>
+              <td>{`Application ${index + 1}`}</td>
+              <td>{app.createdAt.split("T")[0]}</td>
+              <td>
+                {pdfDisplay[index] ? (
+                  <div>
+                    <iframe
+                      src={app.fileURL}
+                      width="100%"
+                      height="600px"
+                      style={{ border: "none" }}
+                    ></iframe>
+                    <button onClick={() => togglePDFDisplay(index)}>
+                      Hide
+                    </button>
+                  </div>
+                ) : (
+                  <button onClick={() => togglePDFDisplay(index)}>Show</button>
+                )}
+              </td>
             </tr>
-          ))} */}
-        <tr>
-          <td>UserName</td>
-          <td>Application 1</td>
-          <td>ugjhj</td>
-        </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

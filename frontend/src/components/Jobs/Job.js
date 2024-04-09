@@ -41,7 +41,6 @@ export default function JobCard() {
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
       setjobPost(response.data);
-      // console.log(response)
     });
   }, []);
 
