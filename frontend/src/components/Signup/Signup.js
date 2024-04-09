@@ -1,150 +1,161 @@
 import React, { useState } from "react";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { useNavigate } from "react-router-dom";
+import "./Signup.css";
 
-function SignupForm() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+function SignupPage() {
+  const [formData, setFormData] = useState({
+    userName: "",
+    imageURL: "",
+    email: "",
+    phoneNumber: "",
+    password: "",
+    address: "",
+  });
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (emailRegex.test(email)) {
-      setEmailError("");
-      return true;
-    } else {
-      setEmailError("Please enter a valid email address.");
-      return false;
+  const [errors, setErrors] = useState({});
+
+  const axios = useAxiosPrivate();
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      setFormData({ ...formData, imageURL: "imageURL" });
+      axios
+        .post("http://127.0.0.1:3000/auth/register", formData)
+        .then((response) => {
+          navigate("/sign-in");
+        });
     }
   };
 
-  const validatePassword = (password) => {
-    if (password.length < 5) {
-      setPasswordError("Password must be at least 5 characters long.");
-      return false;
-    } else {
-      setPasswordError("");
-      return true;
-    }
-  };
+  const validateForm = () => {
+    let newErrors = {};
+    let isValid = true;
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const isEmailValid = validateEmail(email);
-    const isPasswordValid = validatePassword(password);
-
-    if (!isEmailValid || !isPasswordValid) {
-      console.error("Form has errors.");
-      return; // Stop the submission if there are errors.
+    // Username validation
+    if (!formData.userName.trim()) {
+      isValid = false;
+      newErrors.userName = "Username is required";
     }
 
-    console.log("Form submitted:", { email, password });
-    // Here you can handle the form submission, such as sending data to a server.
+    // Image URL validation (simple validation for example purposes)
+    // if (!formData.imageURL.trim()) {
+    //   isValid = false;
+    //   newErrors.imageURL = 'Image URL is required';
+    // }
+
+    // Email validation
+    if (!formData.email.trim()) {
+      isValid = false;
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      isValid = false;
+      newErrors.email = "Email is invalid";
+    }
+
+    // Phone Number validation
+    if (!formData.phoneNumber.trim()) {
+      isValid = false;
+      newErrors.phoneNumber = "Phone Number is required";
+    } else if (!/^\d+$/.test(formData.phoneNumber)) {
+      isValid = false;
+      newErrors.phoneNumber = "Phone Number must contain only numbers";
+    }
+
+    // Password validation
+    if (!formData.password) {
+      isValid = false;
+      newErrors.password = "Password is required";
+    } else if (formData.password.length < 6) {
+      isValid = false;
+      newErrors.password = "Password must be at least 6 characters";
+    }
+
+    // Address validation
+    if (!formData.address.trim()) {
+      isValid = false;
+      newErrors.address = "Address is required";
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
 
-    return (
-        <div className="container mt-5">
-            <h2>Signup Form</h2>
-            <form noValidate onSubmit={handleSubmit}>
-            <div className="mb-3">
-                    <label className="form-label">UserName</label>
-                    <input
-                        type="username"
-                        className={`form-control ${usernameError ? 'is-invalid' : ''}`}
-                        id="usernameInput"
-                        value={userName}
-                        onChange={(e) => setUserame(e.target.value)}
-                        onBlur={() => validateUsername(userName)}
-                    />
-                    {userNameError && <div className="invalid-feedback">{Error}</div>}
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="phoneNumberInput" className="form-label">PhoneNumber</label>
-                    <input
-                        type="phoneNumber"
-                        className={`form-control ${phoneNumberError ? 'is-invalid' : ''}`}
-                        id="phoneNumberInput"
-                        value={phoneNumber}
-                        onChange={(e) => setphoneNumber(e.target.value)}
-                        onBlur={() => validatephoneNumber(phoneNumber)}
-                    />
-                    {phoneNumberError && <div className="invalid-feedback">{phoneNumberError}</div>}
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="emailInput" className="form-label">Email Address</label>
-                    <input
-                        type="email"
-                        className={`form-control ${emailError ? 'is-invalid' : ''}`}
-                        id="emailInput"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        onBlur={() => validateEmail(email)}
-                    />
-                    {emailError && <div className="invalid-feedback">{emailError}</div>}
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="passwordInput" className="form-label">Password</label>
-                    <input
-                        type="password"
-                        className={`form-control ${passwordError ? 'is-invalid' : ''}`}
-                        id="passwordInput"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        onBlur={() => validatePassword(password)}
-                    />
-                    {passwordError && <div className="invalid-feedback">{passwordError}</div>}
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="confirmPasswordInput" className="form-label">Confirm Password</label>
-                    <input
-                        type="confirmPassword"
-                        className={`form-control ${confirmPasswordError ? 'is-invalid' : ''}`}
-                        id="confirmPasswordInput"
-                        value={confirmPassword}
-                        onChange={(e) => setconfirmPassword(e.target.value)}
-                        onBlur={() => validateconfirmPassword(confirmPassword)}
-                    />
-                    {confirmPasswordError && <div className="invalid-feedback">{confirmPasswordError}</div>}
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="stateInput" className="form-label">state</label>
-                    <input
-                        type="state"
-                        className={`form-control ${stateError ? 'is-invalid' : ''}`}
-                        id="stateInput"
-                        value={state}
-                        onChange={(e) => setstate(e.target.value)}
-                        onBlur={() => validatestate(state)}
-                    />
-                    {stateError && <div className="invalid-feedback">{stateError}</div>}
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="cityInput" className="form-label">city</label>
-                    <input
-                        type="city"
-                        className={`form-control ${cityError ? 'is-invalid' : ''}`}
-                        id="cityInput"
-                        value={city}
-                        onChange={(e) => setcity(e.target.value)}
-                        onBlur={() => validatecity(city)}
-                    />
-                    {cityError && <div className="invalid-feedback">{cityError}</div>}
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="streetInput" className="form-label">street</label>
-                    <input
-                        type="street"
-                        className={`form-control ${streetError ? 'is-invalid' : ''}`}
-                        id="streetInput"
-                        value={street}
-                        onChange={(e) => setstreet(e.target.value)}
-                        onBlur={() => validatestreet(street)}
-                    />
-                    {streetError && <div className="invalid-feedback">{streetError}</div>}
-                </div>
-                <button type="submit" className="btn btn-primary">Sign Up</button>
-            </form>
-        </div>
-    );
+  return (
+    <form onSubmit={handleSubmit} noValidate>
+      <h1>Register</h1>
+      <div>
+        <label htmlFor="userName">Username</label>
+        <input
+          type="text"
+          id="userName"
+          name="userName"
+          value={formData.userName}
+          onChange={handleChange}
+        />
+        {errors.userName && <p className="error">{errors.userName}</p>}
+      </div>
+
+      <div>
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        {errors.email && <p className="error">{errors.email}</p>}
+      </div>
+
+      <div>
+        <label htmlFor="phoneNumber">Phone Number</label>
+        <input
+          type="text"
+          id="phoneNumber"
+          name="phoneNumber"
+          value={formData.phoneNumber}
+          onChange={handleChange}
+        />
+        {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
+      </div>
+
+      <div>
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        {errors.password && <p className="error">{errors.password}</p>}
+      </div>
+
+      <div>
+        <label htmlFor="address">Address</label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          value={formData.address}
+          onChange={handleChange}
+        />
+        {errors.address && <p className="error">{errors.address}</p>}
+      </div>
+
+      <button type="submit">Sign Up</button>
+    </form>
+  );
 }
 
-export default SignupForm;
+export default SignupPage;
