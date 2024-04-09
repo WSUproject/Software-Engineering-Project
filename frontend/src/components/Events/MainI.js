@@ -1,111 +1,208 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Button from "@mui/material/Button";
-// import Card from "./event"
-// import EventData from "./data";
-import "./event.css";
 import EventDetails from "./eventDetailsModal";
-
 import { Link } from "react-router-dom";
 
 const baseURL = "http://127.0.0.1:3000/api/events/";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
-
 export default function Ncard() {
-  // const classes = useStyles();
-  const [age, setAge] = React.useState("");
   const axios = useAxiosPrivate();
+  const [selectedTag, setSelectedTag] = useState("");
+  const [tags, setTags] = useState([]);
+  const [eventpost, setEventPost] = useState(null);
+  const [filteredEvents, setFilteredEvents] = useState(null);
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
-  const [eventpost, seteventPost] = React.useState(null);
-
-  React.useEffect(() => {
+  useEffect(() => {
     axios.get(baseURL).then((response) => {
-      seteventPost(response.data);
-      // console.log(response)
+      setEventPost(response.data);
+      setFilteredEvents(response.data); // Initially, set filtered events same as all events
     });
-  }, []);
+  }, [axios]);
 
-  // console.log("response")
-  // console.log(eventpost)
-
-  if (!eventpost) return null;
-
-  const events = eventpost.map((data) => {
-    console.log("----------------------------");
-    console.log(data.uuid);
-    return (
-      <div className="card" key={data.eventID}>
-        <img src={data.imageURL} alt="myPic" className="card_img" />
-
-        <div className="card_info">
-          <h2 className="event_name">{data.eventName} </h2>
-
-          <h3 className="event_date">{data.date.split("T")[0]} </h3>
-          <h3 className="event_location">{data.venue} </h3>
-
-          <div>
-            {/* <button onClick={handleOpen}> View Details</button> */}
-            <EventDetails id={data.uuid} seteventPost={seteventPost} />
-          </div>
-          {/* </a> */}
-        </div>
-      </div>
-    );
-
-    {
-      /* </div> */
+  useEffect(() => {
+    if (!selectedTag) {
+      setFilteredEvents(eventpost); // If no tag selected, show all events
+    } else {
+      // Filter events based on selected tag
+      const filtered = eventpost.filter((event) =>
+        event.eventTag.split(", ").includes(selectedTag)
+      );
+      setFilteredEvents(filtered);
     }
-  });
+  }, [selectedTag, eventpost]);
+
+  useEffect(() => {
+    // Extract all unique tags from events
+    if (eventpost) {
+      const allTags = eventpost.reduce((acc, event) => {
+        const tagsArray = event.eventTag.split(", ");
+        tagsArray.forEach((tag) => {
+          if (!acc.includes(tag)) {
+            acc.push(tag);
+          }
+        });
+        return acc;
+      }, []);
+      setTags(allTags);
+    }
+  }, [eventpost]);
+
+  const handleTagChange = (event) => {
+    setSelectedTag(event.target.value);
+  };
 
   return (
     <>
       <div className="topev">
-        {/* <Box sx={{ minWidth: 200 }} className="selectCategory">
-          <FormControl fullWidth>
-            <InputLabel id="select-label">Category</InputLabel>
-            <Select
-              labelId="select-label"
-              id="select"
-              value={age}
-              label="Category"
-              onChange={handleChange}
-            >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-          </FormControl>
-        </Box> */}
+        <div className="tagContainer">
+          <select value={selectedTag} onChange={handleTagChange}>
+            <option value="">All Tags</option>
+            {tags.map((tag) => (
+              <option key={tag} value={tag}>
+                {tag}
+              </option>
+            ))}
+          </select>
+        </div>
         <Button
-          // className="Createbtn"
           variant="contained"
           size="large"
           color="primary"
           type="submit"
-          // className="btnSubmit"
-          // className={classes.button}
           component={Link}
           to="./CreateEventForm"
         >
           Create Event
         </Button>
       </div>
-      <div className="cards">{events}</div>
+
+      <div className="cards">
+        {filteredEvents &&
+          filteredEvents.map((data) => (
+            <div className="card" key={data.uuid}>
+              <img src={data.imageURL} alt="myPic" className="card_img" />
+              <div className="card_info">
+                <h2 className="event_name">{data.eventName} </h2>
+                <h3 className="event_date">{data.date.split("T")[0]} </h3>
+                <h3 className="event_location">{data.venue} </h3>
+                <EventDetails id={data.uuid} seteventPost={setEventPost} />
+              </div>
+            </div>
+          ))}
+      </div>
     </>
   );
 }
+
+// import React from "react";
+// import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+// import Button from "@mui/material/Button";
+// // import Card from "./event"
+// // import EventData from "./data";
+// import "./event.css";
+// import EventDetails from "./eventDetailsModal";
+
+// import { Link } from "react-router-dom";
+
+// const baseURL = "http://127.0.0.1:3000/api/events/";
+
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 400,
+//   bgcolor: "background.paper",
+//   border: "2px solid #000",
+//   boxShadow: 24,
+//   p: 4,
+// };
+
+// export default function Ncard() {
+//   // const classes = useStyles();
+//   const [age, setAge] = React.useState("");
+//   const axios = useAxiosPrivate();
+
+//   const handleChange = (event) => {
+//     setAge(event.target.value);
+//   };
+
+//   const [eventpost, seteventPost] = React.useState(null);
+
+//   React.useEffect(() => {
+//     axios.get(baseURL).then((response) => {
+//       seteventPost(response.data);
+//       // console.log(response)
+//     });
+//   }, []);
+
+//   // console.log("response")
+//   // console.log(eventpost)
+
+//   if (!eventpost) return null;
+
+//   const events = eventpost.map((data) => {
+//     console.log("----------------------------");
+//     console.log(data.uuid);
+//     return (
+//       <div className="card" key={data.eventID}>
+//         <img src={data.imageURL} alt="myPic" className="card_img" />
+
+//         <div className="card_info">
+//           <h2 className="event_name">{data.eventName} </h2>
+
+//           <h3 className="event_date">{data.date.split("T")[0]} </h3>
+//           <h3 className="event_location">{data.venue} </h3>
+
+//           <div>
+//             {/* <button onClick={handleOpen}> View Details</button> */}
+//             <EventDetails id={data.uuid} seteventPost={seteventPost} />
+//           </div>
+//           {/* </a> */}
+//         </div>
+//       </div>
+//     );
+
+//     {
+//       /* </div> */
+//     }
+//   });
+
+//   return (
+//     <>
+//       <div className="topev">
+//         {/* <Box sx={{ minWidth: 200 }} className="selectCategory">
+//           <FormControl fullWidth>
+//             <InputLabel id="select-label">Category</InputLabel>
+//             <Select
+//               labelId="select-label"
+//               id="select"
+//               value={age}
+//               label="Category"
+//               onChange={handleChange}
+//             >
+//               <MenuItem value={10}>Ten</MenuItem>
+//               <MenuItem value={20}>Twenty</MenuItem>
+//               <MenuItem value={30}>Thirty</MenuItem>
+//             </Select>
+//           </FormControl>
+//         </Box> */}
+//         <Button
+//           // className="Createbtn"
+//           variant="contained"
+//           size="large"
+//           color="primary"
+//           type="submit"
+//           // className="btnSubmit"
+//           // className={classes.button}
+//           component={Link}
+//           to="./CreateEventForm"
+//         >
+//           Create Event
+//         </Button>
+//       </div>
+//       <div className="cards">{events}</div>
+//     </>
+//   );
+// }
