@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./CreateEventForm.css"; // Ensure you have this CSS file
-import axios from "axios";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import ImageUploader from "../../utils/ImageUploader";
 import { useNavigate } from "react-router-dom";
 
@@ -19,6 +19,7 @@ function CreateEventForm() {
     imageURL: "image",
   });
   const navigate = useNavigate();
+  const axios = useAxiosPrivate();
 
   const [errors, setErrors] = useState({});
 

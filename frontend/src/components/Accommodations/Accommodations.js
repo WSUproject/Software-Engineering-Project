@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Button from "@mui/material/Button";
 import "./acc.css";
 import AccommodationDetails from "./AccommodationDetailsModal";
@@ -22,6 +22,7 @@ const style = {
 export default function Ncard() {
   //const classes = useStyles();
   const [age, setAge] = React.useState("");
+  const axios = useAxiosPrivate();
 
   const handleChange = (e) => {
     setAge(e.target.value);

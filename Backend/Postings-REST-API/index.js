@@ -15,7 +15,7 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/auth", authRoutes);
-// app.use(validateToken);
+app.use(validateToken);
 app.use("/api", routes);
 
 app.use((error, req, res, next) => {

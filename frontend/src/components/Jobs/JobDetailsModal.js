@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import "./JobModal.css";
@@ -21,6 +21,7 @@ const style = {
 
 export default function JobDetails(props) {
   const [jobDetails, setjobDetails] = React.useState(null);
+  const axios = useAxiosPrivate();
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -79,6 +80,15 @@ export default function JobDetails(props) {
                 <button class="delBtn" onClick={handleDelete}>
                   Delete
                 </button>
+              </Link>
+            </div>
+            <div class="divbtn00">
+              {/* <b>button</b> */}
+              <Link
+                to={"/viewApplication/" + props.id}
+                style={{ textDecoration: "none" }}
+              >
+                <button class="editBtn">View Application</button>
               </Link>
             </div>
             <div class="div1j">
@@ -168,7 +178,7 @@ export default function JobDetails(props) {
                 })}
               </ul>
             </div>
-            <Link to="/apply" style={{ textDecoration: "none" }}>
+            <Link to={"/apply/" + props.id} style={{ textDecoration: "none" }}>
               <Button>Apply</Button>
             </Link>
           </div>

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./JobPostings.css";
-import axios from "axios";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
 const UpdateJob = (props) => {
   const [jobData, setJobData] = useState([]);
   console.log("==============", props);
   const { id } = useParams();
   console.log("IIIIDDD", id);
+  const axios = useAxiosPrivate();
 
   React.useEffect(() => {
     axios.get(`http://127.0.0.1:3000/api/jobs/${id}`).then((response) => {

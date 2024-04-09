@@ -1,0 +1,43 @@
+.container {
+    /* text-align: center;
+    padding: 20px; */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dropzone {
+    border: 2px dashed #007bff;
+    border-radius: 5px;
+    padding: 20px;
+    cursor: pointer;
+  }
+  
+  .preview{
+    position: relative;
+  }
+  .preview img {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+    border-radius: 5px;
+   
+    
+  }
+  
+  .Xbtn {
+    
+    /* display: inline-block; */
+    position: absolute;
+    margin-top: 10px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0 5px;
+    width: 5rem;
+    height: 2rem;
+    border-radius: 6%;
+    right: 8rem;
+    top: 0rem;
+  }
+  

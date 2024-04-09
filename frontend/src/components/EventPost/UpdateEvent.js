@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./CreateEventForm.css"; // Ensure you have this CSS file
-import axios from "axios";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useParams, useNavigate } from "react-router-dom";
 
 function UpdateEvent(props) {
   const [eventData, setEventData] = useState([]);
+  const axios = useAxiosPrivate();
 
   const { id } = useParams();
 
