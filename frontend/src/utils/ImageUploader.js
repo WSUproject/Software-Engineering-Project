@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import React from "react";
 import { useDropzone } from "react-dropzone";
-import "./ImageUploader.css"; // Importing the CSS file for styling
+import "./ImageUploader.css";
 import { uploadToFirebase } from "./UploadFirebase";
 
 const ImageUploader = ({ setParentState }) => {
@@ -18,7 +18,6 @@ const ImageUploader = ({ setParentState }) => {
   };
 
   const onDrop = useCallback((acceptedFiles) => {
-    // Assuming only image files
     const file = acceptedFiles[0];
     setImage(
       Object.assign(file, {
